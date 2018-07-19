@@ -1,6 +1,122 @@
 <template>
 	<div class="mine">
-		我的
+		<div class="min_top flex_start">
+			<div class="flex_start_v top_tel">
+				<img class="tx_img" src="@/assets/tx@2x.png"/>
+				<div class="">
+					<p>137****9534</p>
+					<div class="flex_start_v">
+						<img class="hy_img" src="../../build/logo.png"/>
+						<span class="font12">二级会员</span>
+					</div>
+				</div>				
+			</div>			
+		</div>
+		<div class="min_sec">
+			<div class="top_con flex_between">
+				<div class="flex_clu_v">
+					<div class="flex_start">
+						<p class="top_p1">冻结金额</p>
+						<p class="top_p2">2000</p>
+					</div>
+					<div class="flex_start">
+						<p class="top_p1">买入中订单数</p>
+						<p class="top_p2">2</p>
+					</div>
+					<div class="flex_start">
+						<p class="top_p1">卖出中订单数</p>
+						<p class="top_p2">1</p>
+					</div>
+					<div class="flex_start">
+						<p class="top_p1">排单币</p>
+						<p class="top_p2">0</p>
+					</div>
+				</div>
+				<div class="flex_clu_v">
+					<div class="flex_start">
+						<p class="top_p1">售出钱包</p>
+						<p class="top_p2">2000</p>
+					</div>
+					<div class="flex_start">
+						<p class="top_p1">冻结中订单数</p>
+						<p class="top_p2">2000</p>
+					</div>
+					<div class="flex_start">
+						<p class="top_p1">冻结中订单数</p>
+						<p class="top_p2">2000</p>
+					</div>
+					<div class="flex_start">
+						<p class="top_p1">直推收益</p>
+						<p class="top_p2">2000</p>
+					</div>
+				</div>
+			</div>
+		</div>
+		<div class="min_list">
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">我的团队</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">个人资料</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">钱包地址</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">福币收益</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">账户托管</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">预约交易</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">二级密码</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">客服列表</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+			<div class="flex_between_v list_div border0">
+				<div class="flex_start_v">
+					<img src="@/assets/ejmmicon@2x.png"/>
+					<p class="list_p1">会员注册</p>
+				</div>
+				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+			</div>
+		</div>
 	</div>
 </template>
 
@@ -11,4 +127,20 @@
 </script>
 
 <style scoped>
+.mine{position: relative;}
+.min_top{padding: .22rem .3rem;background: #FF6808;width: 100%;height: 2.7rem;color: #fff;display: flex;}
+.tx_img{width: .9rem;height: .9rem;margin-right: .24rem;}
+.top_tel{height: .9rem;}
+.hy_img{width: .28rem;height: .28rem;}
+.font12{font-size: .24rem;}
+.top_con{width: 100%;height: 3rem;background-image: linear-gradient(-269deg, #FDF3EB 0%, #FFF8F3 98%);border-radius: 20px;padding: .42rem .3rem;}
+.flex_clu_v{display: flex;flex-direction: column;justify-content: space-between;flex: 1;}
+.top_p1{font-size: .24rem;color: #666666;width: 1.7rem;}
+.top_p2{color: #222222;}
+.min_list{margin: 0 .3rem; background: #fff;border-radius: 20px;padding: 0 .3rem;margin-top: 1.8rem;margin-bottom: .2rem;}
+.list_div{height: .9rem; border-bottom: 2px solid #E5E5E5;}
+.list_p1{color: #666666;margin-left: .1rem;}
+.border0{border: 0;}
+.right_img{width: .4rem; height: .4rem;}
+.min_sec{padding: 0 .3rem;width: 100%; position: absolute;top: 1.26rem;}
 </style>

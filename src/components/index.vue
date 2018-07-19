@@ -28,12 +28,13 @@
 </script>
 
 <style scoped>
-	
+	.index{padding-bottom: .98rem;}
 	.bottom{
 		height: 0.98rem;
 		width: 100%;
 		position: fixed;
 		bottom: 0px;
+		z-index: 999;
 	}
 	.bottom-img{
 		width: 0.48rem;
