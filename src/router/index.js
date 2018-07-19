@@ -17,7 +17,10 @@ import BankAccount from '@/components/bankAccount'
 import Bank from '@/components/bank'
 import Wallet from '@/components/wallet'
 import Addwallet from '@/components/addwallet'
-
+import BuyOrderDetails from '@/components/buyOrderDetails.vue'
+import SaleOrderDetails from '@/components/saleOrderDetails'
+import IntegralTrans from '@/components/integralTrans'
+import BuyinDetail from '@/components/buyinDetail'
 Vue.use(Router)
 
 const router = new Router({
@@ -39,6 +42,10 @@ const router = new Router({
     {path: '/bank',name: 'bank',component: Bank,meta: {title: '选择银行'}},
     {path: '/wallet',name: 'wallet',component: Wallet,meta: {title: '钱包地址'}},
     {path: '/addwallet',name: 'addwallet',component: Addwallet,meta: {title: '添加钱包地址'}},
+    {path: '/buyOrderDetails',name: 'buyOrderDetails',component: BuyOrderDetails,meta: {title: '买入订单'}},
+    {path: '/saleOrderDetails',name: 'saleOrderDetails',component: SaleOrderDetails,meta: {title: '卖出订单'}},
+    {path: '/integralTrans',name: 'integralTrans',component: IntegralTrans,meta: {title: '买入'}},
+    {path: '/buyinDetail',name: 'buyinDetail',component: BuyinDetail,meta: {title: '买入'}},
   ]
 })
 

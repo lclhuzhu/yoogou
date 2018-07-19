@@ -5,21 +5,23 @@
 			积分购
 		</div>
 		<ul>
-			<li>
-				<div class="integral-mairu">
-					<ul>
-						<li>
-							<p>买入商品</p>
-							<span>PURCHUSE</span>
-						</li>
-						<li>
-							<div class="integral-mairu-img">
-								<img src="../../build/logo.png"/>
-							</div>
-						</li>
-					</ul>
-				</div>
-			</li>
+			<router-link to="/integralTrans">
+				<li>
+					<div class="integral-mairu">
+						<ul>
+							<li>
+								<p>买入商品</p>
+								<span>PURCHUSE</span>
+							</li>
+							<li>
+								<div class="integral-mairu-img">
+									<img src="../../build/logo.png"/>
+								</div>
+							</li>
+						</ul>
+					</div>
+				</li>
+			</router-link>
 			<li>
 				<div class="integral-maichu">
 					<ul>
