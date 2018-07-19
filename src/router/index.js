@@ -9,6 +9,14 @@ import Integral from '@/components/integral'
 import IntegralDealList from '@/components/IntegralDealList'
 import Shopcar from '@/components/shopcar'
 import Mine from '@/components/mine'
+import Myteam from '@/components/myteam'
+import UserDetails from '@/components/userDetails'
+import Personal from '@/components/personal'
+import PersonalData from '@/components/personalData'
+import BankAccount from '@/components/bankAccount'
+import Bank from '@/components/bank'
+import Wallet from '@/components/wallet'
+import Addwallet from '@/components/addwallet'
 
 Vue.use(Router)
 
@@ -23,6 +31,14 @@ const router = new Router({
     	{path: '/mine',name: 'mine',component: Mine, meta: {title: '互助商城'}}
     ]},
     {path: '/IntegralDealList',name: 'IntegralDealList',component: IntegralDealList,meta: {title: '积分交易情况'}},
+    {path: '/myteam',name: 'myteam',component: Myteam,meta: {title: '我的团队'}},
+    {path: '/userDetails',name: 'userDetails',component: UserDetails,meta: {title: '用户详情'}},
+    {path: '/personal',name: 'personal',component: Personal,meta: {title: '个人资料'}},
+    {path: '/personalData',name: 'personalData',component: PersonalData,meta: {title: '个人资料'}},
+    {path: '/bankAccount',name: 'bankAccount',component: BankAccount,meta: {title: '银行账户'}},
+    {path: '/bank',name: 'bank',component: Bank,meta: {title: '选择银行'}},
+    {path: '/wallet',name: 'wallet',component: Wallet,meta: {title: '钱包地址'}},
+    {path: '/addwallet',name: 'addwallet',component: Addwallet,meta: {title: '添加钱包地址'}},
   ]
 })
 

@@ -32,4 +32,10 @@ a{text-decoration: none;color: #4A4A4A;}
 
 /*弹窗样式*/
 .van-toast--text{min-width: 4.4rem !important;font-size: .28rem !important;padding: .24rem !important;}
+/*导航栏样式*/
+.van-nav-bar{height: .88rem;line-height: .88rem;background-color: rgba(255,255,255,0.82);border-bottom: 2px solid #E5E5E5;}
+.van-nav-bar__title{font-size: .36rem !important;color: #222222;}
+.van-nav-bar .van-icon{color: #222222;font-size: .28rem;}
+.van-nav-bar__text{font-size: .24rem;color: #222222;}
+.wallet .van-nav-bar{position: fixed;top: 0;width: 100%;}
 </style>

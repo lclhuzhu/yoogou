@@ -53,27 +53,27 @@
 			</div>
 		</div>
 		<div class="min_list">
-			<div class="flex_between_v list_div">
+			<router-link to='/myteam' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">我的团队</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
-			<div class="flex_between_v list_div">
+			</router-link>
+			<router-link to='/personal' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">个人资料</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
-			<div class="flex_between_v list_div">
+			</router-link>
+			<router-link to='/wallet' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">钱包地址</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
+			</router-link>
 			<div class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
@@ -127,6 +127,7 @@
 </script>
 
 <style scoped>
+a{box-sizing: border-box;}
 .mine{position: relative;}
 .min_top{padding: .22rem .3rem;background: #FF6808;width: 100%;height: 2.7rem;color: #fff;display: flex;}
 .tx_img{width: .9rem;height: .9rem;margin-right: .24rem;}
