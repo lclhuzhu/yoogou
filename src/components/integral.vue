@@ -5,7 +5,6 @@
 			积分购
 		</div>
 		<ul>
-			<router-link to="/integralTrans">
 				<li>
 					<div class="integral-mairu">
 						<ul>
@@ -21,7 +20,26 @@
 						</ul>
 					</div>
 				</li>
-			</router-link>
+
+			<li>
+        <router-link to="/integralTrans">
+          <div class="integral-mairu">
+            <ul>
+              <li>
+                <p>买入商品</p>
+                <span>PURCHUSE</span>
+              </li>
+              <li>
+                <div class="integral-mairu-img">
+                  <img src="../../build/logo.png"/>
+                </div>
+              </li>
+            </ul>
+          </div>
+        </router-link>
+
+			</li>
+
 			<li>
 				<div class="integral-maichu">
 					<ul>
@@ -53,7 +71,7 @@
 			</span>
 		</div>
 	</router-link>
-</div>	
+</div>
 </template>
 
 <script>
@@ -158,10 +176,10 @@
 	}
 	.integral-goods-img{
 		width: 0.9rem;
-		height: 0.9rem;	
+		height: 0.9rem;
 		float: left;
 		margin: 0.4rem ;
-		
+
 	}
 	.integral-goods-img img{
 		width: 100%;

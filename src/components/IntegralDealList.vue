@@ -22,17 +22,17 @@
 						<ul class="await">
 							<li class="state">预付款</li>
 							<li class="money"><i>$</i>200<span>欠着</span></li>
-					
+
 						</ul>
 						<ul class="tail">
 							<li class="state">尾款</li>
 							<li class="money"><i>$</i>20<span>不给了</span></li>
-							
+
 						</ul>
 					</div>
 				</div>
 			</router-link>
-			
+
 			<div class="list-single">
 				<div class="date">
 					今天
@@ -49,12 +49,12 @@
 					<ul class="await">
 						<li class="state">预付款</li>
 						<li class="money"><i>$</i>200<span>已支付</span></li>
-				
+
 					</ul>
 					<ul class="tail">
 						<li class="state">尾款</li>
 						<li class="money"><i>$</i>20<span>待支付</span></li>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -74,12 +74,12 @@
 					<ul class="await">
 						<li class="state">预付款</li>
 						<li class="money"><i>$</i>200<span>已支付</span></li>
-				
+
 					</ul>
 					<ul class="tail">
 						<li class="state">尾款</li>
 						<li class="money"><i>$</i>20<span>待支付</span></li>
-						
+
 					</ul>
 				</div>
 			</div>
@@ -127,7 +127,7 @@
 			</div>
 		</div>
 	</div>
-	
+
 </template>
 
 <script>
@@ -153,7 +153,7 @@
 	  	}
 	}
 </script>
-	
+
 <style scoped>
 ul li{
 	width: 50%;
@@ -188,7 +188,7 @@ ul li{
 	height: 3.5rem;
 	width: 100%;
 	box-sizing: border-box;
-	
+
 }
 .date{
 	width: 100%;
@@ -196,9 +196,9 @@ ul li{
 	border-bottom: 1px solid #E9E9E9;
 }
 .details{
-	background-color: #FFFFFF;
-	padding: 0rem 0.3rem;
-}
+   background-color: #FFFFFF;
+   padding: 0rem 0.3rem;
+ }
 .dingdan{
 	width: 100%;
 	height: 0.6rem;
