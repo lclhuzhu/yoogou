@@ -32,4 +32,27 @@ a{text-decoration: none;color: #4A4A4A;}
 
 /*弹窗样式*/
 .van-toast--text{min-width: 4.4rem !important;font-size: .28rem !important;padding: .24rem !important;}
+/*导航栏样式*/
+.van-nav-bar{
+	height: 0.88rem;
+	line-height: 0.88rem;
+}
+.van-nav-bar__left, .van-nav-bar__right{
+	font-size:0.28rem;
+}
+.van-nav-bar__title{
+	font-size:0.28rem;
+}
+.van-tabs--line{
+	height: 0.88rem;
+}
+.van-tabs--line .van-tabs__wrap{
+	height: 0.8rem;
+	line-height: 0.8rem;
+}
+.van-tab{
+	height: 0.88rem;
+	line-height: 0.88rem;
+	font-size: 0.28rem;
+}
 </style>

@@ -1,6 +1,6 @@
 <template>
 <div class="buyOrderDetails">
-	<van-nav-bar title="买入订单" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+	<van-nav-bar title="买入订单" left-text="返回" left-arrow @click-left="onClickLeft"/>
 	<div class="list-single">
 		<div class="details">
 			<ul class="dingdan">
