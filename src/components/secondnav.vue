@@ -1,12 +1,12 @@
 <template>
-	<div class="ordered">
-		<van-nav-bar title="预约交易" left-text="返回" left-arrow @click-left="onClickLeft"/>
-		<router-link to='/orbuying' class="flex_between_v bor1">
-			<p>预约买入</p>
+	<div class="secondnav">
+		<van-nav-bar title="二级密码" left-text="返回" left-arrow @click-left="onClickLeft"/>
+		<router-link to='/modifypas' class="flex_between_v bor1">
+			<p>修改二级密码</p>
 			<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 		</router-link>
-		<router-link to='/orselling' class="flex_between_v">
-			<p>预约卖出</p>
+		<router-link to='/forgetpas' class="flex_between_v">
+			<p>忘记二级密码</p>
 			<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 		</router-link>
 	</div>
@@ -14,17 +14,17 @@
 
 <script>
 	export default({
-		name: 'ordered',
+		name: 'secondnav',
 		data () {
 			return {
-				show: true
+				
 			}
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
-		        history.go(-1)
-		    }
+		      history.go(-1)
+		    },
 		}
 	})
 </script>

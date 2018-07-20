@@ -13,17 +13,14 @@
 		<div class="top_nav flex_between_v">
 			<p class="nav_p">账号</p>
 			<p class="nav_p">状态</p>
-			<p class="nav_p">是否激活</p>
 		</div>
 		<div class="list_fater">
 			<div class="my_list flex_between_v" v-for="item in 5">
 				<div class="list_con" @click="detail">
-					<p>15911111111</p>
-					<p>张三</p>
+					<p>15911111111 张三</p>
 				</div>
-				<p class="list_con">冻结</p>
-				<div class="list_con flex_center_v">
-					<p>未激活 | </p>
+				<div class="list_con flex_center">
+					<p>未激活</p>
 					<p class="colff6" @click="show = true">&nbsp;激活</p>
 				</div>
 			</div>
@@ -64,7 +61,7 @@
 </script>
 
 <style scoped>
-.colff6{color: #FF6A08 !important;}
+.colff6{color: #FF6A08 !important;padding: .14rem .28rem; box-sizing: border-box;border:2px solid #FF6A08;border-radius: 100px;margin-left: .28rem;}
 .top_cle{border-bottom: 2px solid #E5E5E5;}
 .top_til{background: #FFFFFF;width: 100%;height: 1rem;flex: 1;text-align: center;color: #666666;}
 .top_t1{display: flex;flex-direction: column;justify-content: center;}

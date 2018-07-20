@@ -31,6 +31,13 @@ import Fortune from '@/components/fortune'
 import MyIntegral from '@/components/myIntegral'
 import Ordered from '@/components/ordered'
 import Orbuying from '@/components/orbuying'
+import Orselling from '@/components/orselling'
+import SecondLevel from '@/components/secondLevel'
+import Secondnav from '@/components/secondnav'
+import Modifypas from '@/components/modifypas'
+import Forgetpas from '@/components/forgetpas'
+import Customer from '@/components/customer'
+import Membereg from '@/components/membereg'
 
 Vue.use(Router)
 
@@ -57,6 +64,13 @@ const router = new Router({
  		{path: '/fortune',name: 'fortune',component: Fortune,meta: {title: '福币收益'}},
  		{path: '/ordered',name: 'ordered',component: Ordered,meta: {title: '预约交易'}},
  		{path: '/orbuying',name: 'orbuying',component: Orbuying,meta: {title: '预约买入'}},
+ 		{path: '/orselling',name: 'orselling',component: Orselling,meta: {title: '预约卖出'}},
+ 		{path: '/secondLevel',name: 'secondLevel',component: SecondLevel,meta: {title: '二级密码'}},
+ 		{path: '/secondnav',name: 'secondnav',component: Secondnav,meta: {title: '二级密码'}},
+ 		{path: '/modifypas',name: 'modifypas',component: Modifypas,meta: {title: '修改二级密码'}},
+ 		{path: '/forgetpas',name: 'forgetpas',component: Forgetpas,meta: {title: '找回二级密码'}},
+ 		{path: '/customer',name: 'customer',component: Customer,meta: {title: '客服列表'}},
+ 		{path: '/membereg',name: 'membereg',component: Membereg,meta: {title: '会员注册'}},
  		{path: '/myIntegral',name: 'myIntegral',component: MyIntegral,meta: {title: '积分'}},
     {path: '/buyOrderDetails',name: 'buyOrderDetails',component: BuyOrderDetails,meta: {title: '买入订单'}},
     {path: '/saleOrderDetails',name: 'saleOrderDetails',component: SaleOrderDetails,meta: {title: '卖出订单'}},

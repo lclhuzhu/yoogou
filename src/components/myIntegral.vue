@@ -15,6 +15,15 @@
 			<p class="pop_p1" v-if="0">暂无被托管人</p>
 			<p class="pop_p1">您的账户已托管至您的直接推荐人！</p>
 		</van-popup>
+		<!--弹出框-->
+		<van-popup v-model="tgshow">
+			<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
+			<p class="pop_p1">确认取消托管账户？</p>
+			<div class="flex_center">
+				<p class="pop_p2" @click="tgshow = false">确认</p>
+				<p class="pop_p3" @click="tgshow = false">取消</p>				
+			</div>
+		</van-popup>
 	</div>
 </template>
 
@@ -23,7 +32,8 @@
 		name: 'myIntegral',
 		data () {
 			return {
-				show: true
+				show: false,
+				tgshow: true
 			}
 		},
 		methods: {

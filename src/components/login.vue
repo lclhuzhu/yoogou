@@ -1,6 +1,6 @@
 <template>
 	<div class="login">
-		<img class="logo_img" src="@/assets/Bar@2x.png"/>
+		<img class="logo_img" src="@/assets/logo@2x.png"/>
 		<div class="til">
 			互助商城
 		</div>

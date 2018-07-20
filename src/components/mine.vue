@@ -95,34 +95,47 @@
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
-			<div class="flex_between_v list_div">
+			<div class="flex_between_v list_div" @click="pass">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">二级密码</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</div>
-			<div class="flex_between_v list_div">
+			<router-link to='/customer' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">客服列表</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
-			<div class="flex_between_v list_div border0">
+			</router-link>
+			<router-link to='/membereg' class="flex_between_v list_div border0">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">会员注册</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
+			</router-link>
 		</div>
 	</div>
 </template>
 
 <script>
 	export default({
-		name: 'mine'
+		name: 'mine',
+		data () {
+			return {
+				
+			}
+		},
+		methods: {
+			pass () {
+				// 未设置二级密码
+				// this.$router.push({path:'/secondLevel'})
+				//已设置二级密码
+				this.$router.push({path:'/secondnav'})
+			}
+		}
 	})
 </script>
 
