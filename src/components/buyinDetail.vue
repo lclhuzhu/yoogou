@@ -20,8 +20,24 @@
     </div>
   </van-cell-group>
 	<!--弹框-->
+  <van-popup v-model="isShow" :close-on-click-overlay = "true">
+    <div class="pop-bottm">
+        <span class="title">提示</span>
+        <div class="line"></div>
+      <!--<img src="" >-->
+        <p class="pop-p1">购买后即将发起排单…</p>
+        <p class="pop-p2">您的排单将在下一个交易日根据</p>
+        <p class="pop-p3">先后顺序进入排单交易池</p>
+        <router-link to="/IntegralDealList">
+          <div class="ok">
+            OK
+          </div>
+        </router-link>
+
+    </div>
+  </van-popup>
   <div class="bottom">
-    <div class="button" @onclick="onClickBuy">确认买入</div>
+    <div class="button" @click="isShow = true">确认买入</div>
   </div>
 </div>
 </template>
@@ -31,6 +47,7 @@
         name: "buyinDetail",
       	data () {
           return {
+            isShow: false,
             title: '新品和田蓝玉香炉玉石毛料冰种原料牌子\n阳绿色A货',
             price: 10000,
             express: '产品说明：\n投资2000，单日利率1%，单个交易周期收益最高15%',
@@ -117,7 +134,7 @@
     height: .88rem;
     color: white;
     /*corner-radius: .44rem;*/
-    background-color: #FF9400;
+    background: linear-gradient(left,#FF9400,#FF6808 );
     line-height: .88rem;
     text-align: center;
     border-radius: .44rem;
@@ -125,4 +142,26 @@
     top: .2rem;
     left: .5rem;
   }
+</style>
+<style>
+  .van-popup {
+  width: 6.3rem;
+  height: 3.9rem;
+  margin: 0 auto;
+  border-radius: 12px;
+  }
+  .pop-bottm {
+    text-align: center;
+    padding-top: .30rem;
+  }
+
+.title { font-size: .36rem;
+  display: inline-block;
+  margin: 0 auto;
+}
+  .line {width: 6.3rem; height: 1px; background-color: #DDDDDD; margin-top: .25rem}
+  .ok {background-color: #FF9400; color: white; width: 2.4rem; height: .8rem; margin: 0 auto; border-radius: .44rem; line-height: .8rem; margin-top: .2rem;}
+  .pop-p1 {margin-top: .22rem; line-height: .48rem}
+  .pop-p2 {line-height: .48rem}
+  .pop-p3 {line-height: .48rem}
 </style>
