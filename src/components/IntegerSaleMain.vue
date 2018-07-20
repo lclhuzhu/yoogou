@@ -46,14 +46,14 @@ export default {
 }
 .sep-line {
   background: #cccccc;
-  margin-right: 10px;
-  width:1px;
+  margin-right: 0.2rem;
+  width: 0.01rem;
 }
 .container {
-  padding-left: 15px;
-  padding-right: 15px;
-  padding-top: 25px;
-  padding-bottom: 25px;
+  padding-left: 0.3rem;
+  padding-right: 0.3rem;
+  padding-top: 0.5rem;
+  padding-bottom: 0.5rem;
   background: #ffffff;
   display: flex;
   flex-direction: row;
@@ -70,18 +70,18 @@ export default {
   flex-direction: column;
 }
 .img {
-  width: 70px;
-  height: 100px;
+  width: 1.4rem;
+  height: 2rem;
 }
 .txt1 {
-  font-size: 12px;
+  font-size: 0.24rem;
   color: #222222;
   letter-spacing: 0;
 }
 .txt2 {
-  font-size: 10px;
+  font-size: 0.2rem;
   color: rgba(204, 204, 204, 0.4);
   letter-spacing: 0;
-  margin-top: 5px;
+  margin-top: 0.1rem;
 }
 </style>

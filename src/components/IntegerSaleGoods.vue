@@ -4,7 +4,7 @@
       <van-tabs v-model="active" >
 		    <van-tab v-for="(val,idx) in mtabs" :title="val" :key="idx">
 
-            <van-list class="list" :style="{height:listHeight,paddingBottom:idx==0?'65px':0}"
+            <van-list :class="['list',idx==0?'list-first':'']"
               v-model="refreshState[idx].loading"
               :finished="refreshState[idx].finished"
               @load="onLoad"
@@ -64,7 +64,6 @@ export default {
     return {
       mtabs: ['可卖出', '交易中', '已卖出'],
       active: 0,
-      listHeight: 0,
       enable: false,
       refreshState: [
         {
@@ -120,9 +119,6 @@ export default {
       ]
     }
   },
-  mounted() {
-    this.listHeight = `${document.documentElement.clientHeight - 90}px`
-  },
   methods: {
     onClickLeft() {
       this.$router.go(-1)
@@ -136,55 +132,63 @@ export default {
 
 <style scoped>
 .list-item-check {
-  width: 15px;
-  height: 15px;
-  margin-right: 10px;
+  width: 0.3rem;
+  height: 0.3rem;
+  margin-right: 0.2rem;
 }
 .list-item-title {
-  padding-right: 15px;
+  padding-right: 0.3rem;
   display: flex;
   flex-direction: row;
-  height: 34px;
+  height: 0.68rem;
   align-items: center;
   border-bottom: #cccccc;
   border-bottom-style: solid;
-  border-bottom-width: 1px;
+  border-bottom-width: 2px;
 }
 .sale-enable {
   color: #19BA46;
 }
 .list-item-row {
-  padding-right: 15px;
+  padding-right: 0.3rem;
   display: flex;
   flex-direction: row;
-  padding-top: 10px;
+  padding-top: 0.2rem;
 }
 .list-item-withcheck {
-  padding-left: 25px;
+  padding-left: 0.5rem;
 }
 .list-item-key {
   flex:1;
-  font-size: 12px;
+  font-size: 0.24rem;
   color: #999999;
 }
 .list-item-value {
-  font-size: 12px;
+  font-size: 0.24rem;
   color: #222222;
 }
 .list_content {
-  padding-bottom: 16px;
+  padding-bottom: 0.32rem;
   background: #ffffff;
-  padding-left: 15px;
+  padding-left: 0.3rem;
   display: flex;
   align-items: stretch;
   flex-direction: column;
 }
 .list_cell {
   width: 100%;
-  padding-top: 10px;
+  padding-top: 0.2rem;
 }
 .list {
   overflow: scroll;
+  position: fixed;
+  left: 0;
+  right: 0;
+  top: 1.68rem;
+  bottom: 0;
+}
+.list-first {
+  padding-bottom: 1.3rem;
 }
 .container1 {
   display: flex;
@@ -201,11 +205,11 @@ export default {
   background-image: linear-gradient(-90deg, #ff9400 0%, #ff6808 100%);
 }
 .submit {
-  height: 44px;
+  height: 0.88rem;
   color: white;
   border-style: none;
-  border-radius: 100px;
-  font-size: 16px;
+  border-radius: 200px;
+  font-size: 0.32rem;
 }
 .bottom {
   position: fixed;
@@ -215,10 +219,13 @@ export default {
   display: flex;
   flex-direction: column;
   background: #ffffff;
-  height: 65px;
-  padding-left: 25px;
-  padding-right: 25px;
+  height: 1.3rem;
+  padding-left: 0.5rem;
+  padding-right: 0.5rem;
   align-items: stretch;
   justify-content: center;
+  border-top-color: #e5e5e5;
+  border-top-width: 0.02rem;
+  border-top-style: solid;
 }
 </style>
