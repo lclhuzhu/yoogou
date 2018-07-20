@@ -74,27 +74,27 @@
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
-			<div class="flex_between_v list_div">
+			<router-link to='/fortune' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">福币收益</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
-			<div class="flex_between_v list_div">
+			</router-link>
+			<router-link to='/myIntegral' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">账户托管</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
-			<div class="flex_between_v list_div">
+			</router-link>
+			<router-link to='/ordered' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>
 					<p class="list_p1">预约交易</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
-			</div>
+			</router-link>
 			<div class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/ejmmicon@2x.png"/>

@@ -16,18 +16,27 @@
 			<p class="nav_p">是否激活</p>
 		</div>
 		<div class="list_fater">
-			<div class="my_list flex_between_v" v-for="item in 5" @click="detail">
-				<div class="list_con">
+			<div class="my_list flex_between_v" v-for="item in 5">
+				<div class="list_con" @click="detail">
 					<p>15911111111</p>
 					<p>张三</p>
 				</div>
 				<p class="list_con">冻结</p>
 				<div class="list_con flex_center_v">
 					<p>未激活 | </p>
-					<p class="colff6">&nbsp;激活</p>
+					<p class="colff6" @click="show = true">&nbsp;激活</p>
 				</div>
 			</div>
 		</div>
+		<!--弹出框-->
+		<van-popup v-model="show">
+			<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
+			<p class="pop_p1">确认激活15911211111（李四）账户？</p>
+			<div class="flex_center">
+				<p class="pop_p2" @click="show = false">确认</p>
+				<p class="pop_p3" @click="show = false">取消</p>
+			</div>
+		</van-popup>
 	</div>
 </template>
 
@@ -38,7 +47,7 @@
 		name:'myteam',
 		data () {
 			return {
-				
+				show: true
 			}
 		},
 		methods: {
@@ -67,4 +76,12 @@
 .my_list{width: 100%;height: 1.2rem;}
 .list_con{flex: 1;text-align: center;color: #999999;}
 .my_list:nth-child(2n){background: #FFFFFF;}
+/*弹窗*/
+.van-popup{width: 6.34rem;height: 3.92rem; border-radius: 12px; text-align: center;border-radius: 24px;color: #222222;}
+.pop_til{width: 100%;height: .92rem;line-height: .92rem;position: relative;border-bottom: 2px solid #E5E5E5;font-size: .36rem;}
+.close{position: absolute;right: .3rem;color: #D2D2D2;}
+.pop_p1{margin: .76rem 0 .58rem 0;font-size: .32rem;}
+.pop_p2{width: 2.4rem;height: .8rem;line-height: .8rem; text-align: center;margin: auto; background-image: linear-gradient(-90deg, #FF9400 0%, #FF6808 100%);border-radius: 100px;color: #fff;font-size: .32rem;}
+.pop_p3{width: 2.4rem;height: .8rem;line-height: .8rem; text-align: center;margin: auto; background:#FFFFFF;border: 2px solid #FF6D0C; border-radius: 100px;color: #FF6D0C;font-size: .32rem;}
+/*弹窗结束*/
 </style>

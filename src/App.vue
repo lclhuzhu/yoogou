@@ -38,4 +38,11 @@ a{text-decoration: none;color: #4A4A4A;}
 .van-nav-bar .van-icon{color: #222222;font-size: .28rem;}
 .van-nav-bar__text{font-size: .24rem;color: #222222;}
 .wallet .van-nav-bar{position: fixed;top: 0;width: 100%;}
+/*单选cell*/
+.van-cell{padding:.4rem .3rem;font-size:.28rem;color:#222222;border-bottom: 2px solid #e5e5e5;}
+.van-cell:last-child{border: 0;}
+.van-radio .van-icon-check{color: #DFDFDF;}
+.van-radio .van-icon{font-size: .4rem;}
+.van-radio__input{height: .4rem;}
+.van-radio .van-icon-checked{color: #FF6A08;}
 </style>

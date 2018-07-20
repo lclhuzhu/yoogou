@@ -23,6 +23,11 @@ import IntegralTrans from '@/components/integralTrans'
 import BuyinDetail from '@/components/buyinDetail'
 import WillPayList from '@/components/willPayList'
 import BuyPayMoney from '@/components/buyPayMoney'
+import Addbank from '@/components/addbank'
+import Fortune from '@/components/fortune'
+import MyIntegral from '@/components/myIntegral'
+import Ordered from '@/components/ordered'
+import Orbuying from '@/components/orbuying'
 
 Vue.use(Router)
 
@@ -45,6 +50,11 @@ const router = new Router({
     {path: '/bank',name: 'bank',component: Bank,meta: {title: '选择银行'}},
     {path: '/wallet',name: 'wallet',component: Wallet,meta: {title: '钱包地址'}},
     {path: '/addwallet',name: 'addwallet',component: Addwallet,meta: {title: '添加钱包地址'}},
+ 		{path: '/addbank',name: 'addbank',component: Addbank,meta: {title: '选择银行'}},
+ 		{path: '/fortune',name: 'fortune',component: Fortune,meta: {title: '福币收益'}},
+ 		{path: '/ordered',name: 'ordered',component: Ordered,meta: {title: '预约交易'}},
+ 		{path: '/orbuying',name: 'orbuying',component: Orbuying,meta: {title: '预约买入'}},
+ 		{path: '/myIntegral',name: 'myIntegral',component: MyIntegral,meta: {title: '积分'}},
     {path: '/buyOrderDetails',name: 'buyOrderDetails',component: BuyOrderDetails,meta: {title: '买入订单'}},
     {path: '/saleOrderDetails',name: 'saleOrderDetails',component: SaleOrderDetails,meta: {title: '卖出订单'}},
     {path: '/integralTrans',name: 'integralTrans',component: IntegralTrans,meta: {title: '买入'}},
