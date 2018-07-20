@@ -26,19 +26,6 @@
           <li class="money">DGDSGFHFDfgfsfsd</li>
         </ul>
       </div>
-
-      <!--<ul class="price">-->
-        <!--<li class="state">购买积分价格</li>-->
-        <!--<li class="money"><i>$</i>200</li>-->
-        <!--<li class="state">预付款</li>-->
-        <!--<li class="money"><i>$</i>200<span>欠着</span></li>-->
-      <!--</ul>-->
-      <!--<ul class="await">-->
-        <!--<li class="state">预付款</li>-->
-        <!--<li class="money"><i>$</i>200<span>欠着</span></li>-->
-        <!--<li class="state">尾款</li>-->
-        <!--<li class="money"><i>$</i>20<span>不给了</span></li>-->
-      <!--</ul>-->
     </div>
 
   </div>
@@ -86,15 +73,6 @@
   .price{
     height: 0.7rem;
     line-height: 0.7rem;
-  }
-  .await{
-    height: 0.56rem;
-    line-height: 0.56rem;
-    border-bottom: 1px solid #CCCCCC;
-  }
-  .tail{
-    height: 0.56rem;
-    line-height: 0.56rem;
   }
   .content {height: 1.6rem; border-bottom: 2px dashed #CCCCCC;}
 </style>
