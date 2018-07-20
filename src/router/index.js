@@ -23,7 +23,7 @@ import IntegralTrans from '@/components/integralTrans'
 import BuyinDetail from '@/components/buyinDetail'
 import WillPayList from '@/components/willPayList'
 import BuyPayMoney from '@/components/buyPayMoney'
-
+import ReceiveDetail from '@/components/receiveDetail'
 Vue.use(Router)
 
 const router = new Router({
@@ -51,6 +51,7 @@ const router = new Router({
     {path: '/buyinDetail',name: 'buyinDetail',component: BuyinDetail,meta: {title: '买入'}},
     {path: '/willPayList',name: 'willPayList',component: WillPayList,meta: {title: '预付款列表'}},
     {path: '/buyPayMoney',name: 'buyPayMoney',component: BuyPayMoney,meta: {title: '预付款列表'}},
+    {path: '/receiveDetail',name: 'receiveDetail',component: ReceiveDetail,meta: {title: '预付款列表'}},
   ]
 })
 

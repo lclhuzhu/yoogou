@@ -78,16 +78,6 @@
     <div class="pop-bottm">
       <span class="title">提示</span>
       <div class="line"></div>
-
-      <!--<router-link>-->
-        <!--<div class="will-pay ">预付款</div>-->
-      <!--</router-link>-->
-
-      <!--<router-link to="/IntegralDealList">-->
-        <!--<div class="delay">-->
-          <!--尾款-->
-        <!--</div>-->
-      <!--</router-link>-->
       <ul>
         <router-link to="/willPayList">
           <li class="will-pay">预付款</li>
