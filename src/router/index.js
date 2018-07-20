@@ -54,7 +54,7 @@ const router = new Router({
     {path: '/buyinDetail',name: 'buyinDetail',component: BuyinDetail,meta: {title: '买入'}},
     {path: '/integerSaleMain',name: 'integerSaleMain',component: IntegerSaleMain,meta: {title: '买入'}},
     {path: '/integerSaleGoods',name: 'integerSaleGoods',component: IntegerSaleGoods,meta: {title: '选择卖出订单'}},
-    {path: '/integerSaleIncome',name: 'integerSaleIncome',component: IntegerSaleIncome,meta: {title: '选择卖出订单'}},
+    {path: '/integerSaleIncome',name: 'integerSaleIncome',component: IntegerSaleIncome,meta: {title: '直接收益卖出'}},
     {path: '/willPayList',name: 'willPayList',component: WillPayList,meta: {title: '预付款列表'}},
     {path: '/buyPayMoney',name: 'buyPayMoney',component: BuyPayMoney,meta: {title: '预付款列表'}},
   ]
