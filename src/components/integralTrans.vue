@@ -14,7 +14,7 @@
 			<p class="pop_p1">您目前无法购买该产品</p>
 			<p class="pop_p2" @click="show = false">OK</p>
 		</van-popup>
-	</div>	
+	</div>
 </template>
 
 <script>
