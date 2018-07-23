@@ -4,9 +4,9 @@
 		<div class="integral-icont">
 			积分购
 		</div>
-		<ul>
+		<ul style="padding: .2rem 0;">
 			<router-link to="/integralTrans">
-				<li>
+				<li style="border-right: 1px solid #E5E5E5;">
 					<div class="integral-mairu">
 						<ul>
 							<li>
@@ -15,7 +15,7 @@
 							</li>
 							<li>
 								<div class="integral-mairu-img">
-									<img src="../../build/logo.png"/>
+									<img src="@/assets/smr@2x.png"/>
 								</div>
 							</li>
 						</ul>
@@ -31,7 +31,7 @@
 						</li>
 						<li>
 							<div class="integral-maichu-img">
-								<img src="../../build/logo.png"/>
+								<img src="@/assets/smc@2x.png"/>
 							</div>
 						</li>
 					</ul>
@@ -41,16 +41,14 @@
 	</div>
 	<router-link to="/IntegralDealList">
 		<div class="integral-goods">
-			<div class="integral-goods-img">
-				<img src="../../build/logo.png"/>
+			<div class="flex_between_v">
+				<img src="@/assets/jfpic@2x.png"/>
+				<div class="integral-goods-text">
+					<h3>积分交易情况</h3>
+					<p>最新交易细节</p>
+				</div>				
 			</div>
-			<div class="integral-goods-text">
-				<h3>积分交易情况</h3>
-				<p>最新交易细节</p>
-			</div>
-			<span class="next">
-				>
-			</span>
+			<img src="@/assets/right@2x.png"/>
 		</div>
 	</router-link>
 </div>	
@@ -64,11 +62,12 @@
 
 <style scoped>
 	/*============积分购买===================*/
+	#integral{overflow: hidden;}
 	.integral{
 		height: 3.2rem;
 		width: 100%;
 		margin-top: 0.2rem;
-		border: 1px solid #42B983;
+		background: #fff;
 		box-sizing: border-box;
 	}
 	.integral-icont{
@@ -86,7 +85,6 @@
 	}
 	.integral ul li{
 		width: 50%;
-		height: 100%;
 		display: block;
 		float: left;
 		box-sizing: border-box;
@@ -98,15 +96,13 @@
 	}
 	.integral-mairu ul li{
 		width: 50%;
-		height: 100%;
 		text-align: center;
 		display: block;
 		float: left;
-		border: 1px solid #3dede3;
 		box-sizing: border-box;
 	}
 	.integral-mairu p{
-		margin-top: 1.08rem;
+		margin-top: .88rem;
 	}
 	.integral-mairu span{
 		color:rgba(204,204,204,0.40);
@@ -115,7 +111,7 @@
 		width: 1.46rem;
 		height: 1.96rem;
 		margin: 0 auto;
-		margin-top: 0.64rem;
+		margin-top: 0.44rem;
 	}
 	.integral-mairu-img img{
 		width: 100%;
@@ -132,11 +128,10 @@
 		text-align: center;
 		display: block;
 		float: left;
-		border: 1px solid #3dede3;
 		box-sizing: border-box;
 	}
 	.integral-maichu p{
-		margin-top: 1.08rem;
+		margin-top: .88rem;
 	}
 	.integral-maichu span{
 		color:rgba(204,204,204,0.40);
@@ -145,7 +140,7 @@
 		width: 1.46rem;
 		height: 1.96rem;
 		margin: 0 auto;
-		margin-top: 0.64rem;
+		margin-top: 0.44rem;
 	}
 	.integral-maichu-img img{
 		width: 100%;
@@ -154,7 +149,12 @@
 	/*====积分购买情况===========*/
 	.integral-goods{
 		height: 1.6rem;
-		border-top: 1px solid #F5F5F5;
+		border-top: 1px solid #e5e5e5;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		padding: 0 .3rem;
+		background: #FCFCFC;
 	}
 	.integral-goods-img{
 		width: 0.9rem;
@@ -170,7 +170,7 @@
 	.integral-goods-text{
 		width: 4rem;
 		height: 0.9rem;
-		margin-top:0.4rem ;
+		margin-left: .4rem;
 		line-height: 0.45rem;
 	}
 	.integral-goods-text p{

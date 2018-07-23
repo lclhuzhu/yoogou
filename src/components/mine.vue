@@ -55,42 +55,42 @@
 		<div class="min_list">
 			<router-link to='/myteam' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/tdicon@2x.png"/>
 					<p class="list_p1">我的团队</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
 			<router-link to='/personal' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/gricon@2x.png"/>
 					<p class="list_p1">个人资料</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
 			<router-link to='/wallet' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/qbicon@2x.png"/>
 					<p class="list_p1">钱包地址</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
 			<router-link to='/fortune' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/fbicon@2x.png"/>
 					<p class="list_p1">福币收益</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
 			<router-link to='/myIntegral' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/zhicon@2x.png"/>
 					<p class="list_p1">账户托管</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
 			<router-link to='/ordered' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/yyicon@2x.png"/>
 					<p class="list_p1">预约交易</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
@@ -104,14 +104,14 @@
 			</div>
 			<router-link to='/customer' class="flex_between_v list_div">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/kficon@2x.png"/>
 					<p class="list_p1">客服列表</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
 			<router-link to='/membereg' class="flex_between_v list_div border0">
 				<div class="flex_start_v">
-					<img src="@/assets/ejmmicon@2x.png"/>
+					<img src="@/assets/hy.png"/>
 					<p class="list_p1">会员注册</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>

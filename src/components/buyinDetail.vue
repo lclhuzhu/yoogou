@@ -33,11 +33,12 @@
             OK
           </div>
         </router-link>
-
     </div>
   </van-popup>
-  <div class="bottom">
-    <div class="button" @click="isShow = true">确认买入</div>
+  <div class="peo_bom">
+	<div class="sub" @click="sub">
+	  确认买入
+	</div>
   </div>
 </div>
 </template>
@@ -47,7 +48,7 @@
         name: "buyinDetail",
       	data () {
           return {
-            isShow: false,
+          	isShow: false,
             title: '新品和田蓝玉香炉玉石毛料冰种原料牌子\n阳绿色A货',
             price: 10000,
             express: '产品说明：\n投资2000，单日利率1%，单个交易周期收益最高15%',

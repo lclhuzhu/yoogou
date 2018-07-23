@@ -2,10 +2,10 @@
 	<div class="index">
 		<div class="heard">
 			<van-swipe :autoplay="3000">
-			  <van-swipe-item>1</van-swipe-item>
-			  <van-swipe-item>2</van-swipe-item>
-			  <van-swipe-item>3</van-swipe-item>
-			  <van-swipe-item>4</van-swipe-item>
+			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
 			</van-swipe>
 		</div>
 		<div class="menu">
@@ -13,7 +13,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/fjicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							附近商家
@@ -23,7 +23,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/xsicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							线上商城
@@ -33,7 +33,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/fjpicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							飞机票
@@ -43,7 +43,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/hcicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							火车票
@@ -53,7 +53,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/sjicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							手机充值
@@ -63,7 +63,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/jyicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							加油卡
@@ -73,7 +73,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/llicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							流量充值
@@ -83,7 +83,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/ghicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							固话充值
@@ -93,7 +93,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/wzicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							违章查询
@@ -103,7 +103,7 @@
 				<li>
 					<router-link to='/home'>
 						<div class="menu-img">
-							<img src="../../build/logo.png"/>
+							<img src="@/assets/fdicon@2x.png"/>
 						</div>
 						<span class="menu-span">
 							罚单代缴
@@ -113,7 +113,7 @@
 			</ul>
 		</div>
 		<div class="notice">
-			<img src="../../build/logo.png"/>
+			<img src="@/assets/tgbanner@2x.png"/>
 		</div>
 		<div class="integral">
 			<div class="integral-icont">
@@ -122,14 +122,14 @@
 			<ul>
 				<li>
 					<div class="integral-mairu">
-						<ul>
+						<ul style="border-right: 2px solid #E5E5E5;">
 							<li>
 								<p>买入商品</p>
 								<span>PURCHUSE</span>
 							</li>
 							<li>
 								<div class="integral-mairu-img">
-									<img src="../../build/logo.png"/>
+									<img src="@/assets/smr@2x.png"/>
 								</div>
 							</li>
 						</ul>
@@ -144,7 +144,7 @@
 							</li>
 							<li>
 								<div class="integral-maichu-img">
-									<img src="../../build/logo.png"/>
+									<img src="@/assets/smc@2x.png"/>
 								</div>
 							</li>
 						</ul>
@@ -175,9 +175,7 @@
 	.heard{
 		height: 3.52rem;
 		width: 100%;
-		border: 1px solid #42B983;
-		box-sizing: border-box;
-		
+		box-sizing: border-box;		
 	}
 	.van-swipe{
 			width: 100%;
@@ -186,8 +184,8 @@
 	.menu{
 		height: 3.9rem;
 		width: 100%;
-		border: 1px solid #42B983;
 		box-sizing: border-box;
+		background: #fff;
 	}
 	.menu ul li{
 		width: 20%;
@@ -203,7 +201,6 @@
 		margin: 0 auto;
 		margin-top: 0.48rem;
 		box-sizing: border-box;
-		border: 0.5px solid #4A4A4A;
 	}
 	.menu-img img{
 		width: 100%;
@@ -217,7 +214,6 @@
 		height: 2rem;
 		width: 100%;
 		margin-top: 0.2rem;
-		border: 1px solid #42B983;
 		box-sizing: border-box;
 	}
 	.notice img{
@@ -229,8 +225,10 @@
 		height: 3.2rem;
 		width: 100%;
 		margin-top: 0.2rem;
-		border: 1px solid #42B983;
 		box-sizing: border-box;
+		background: #fff;
+		padding: .2rem 0;
+		position: relative;
 	}
 	.integral-icont{
 		width: 1.44rem;
@@ -238,6 +236,7 @@
 		color: #FFFFFF;
 		background-color: #FF6E07;
 		position: absolute;
+		top: 0;
 		border-bottom-right-radius: 0.24rem;
 		text-align:center ;
 	}
@@ -263,11 +262,10 @@
 		text-align: center;
 		display: block;
 		float: left;
-		border: 1px solid #3dede3;
 		box-sizing: border-box;
 	}
 	.integral-mairu p{
-		margin-top: 1.08rem;
+		margin-top: .88rem;
 	}
 	.integral-mairu span{
 		color:rgba(204,204,204,0.40);
@@ -276,7 +274,7 @@
 		width: 1.46rem;
 		height: 1.96rem;
 		margin: 0 auto;
-		margin-top: 0.64rem;
+		margin-top: 0.44rem;
 	}
 	.integral-mairu-img img{
 		width: 100%;
@@ -293,7 +291,6 @@
 		text-align: center;
 		display: block;
 		float: left;
-		border: 1px solid #3dede3;
 		box-sizing: border-box;
 	}
 	.integral-maichu p{

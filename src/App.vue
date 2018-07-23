@@ -16,7 +16,7 @@ html{height: 100%;font-family: PingFangSC-Regular}
 body{font-size:.28rem;height: 100%;color: #555555;background: #F5F5F5;}
 div{box-sizing: border-box;}
 a{text-decoration: none;color: #4A4A4A;}
-#app {font-family: 'Avenir', Helvetica, Arial, sans-serif;height: 100%;width:100%}
+#app {font-family: 'Avenir', Helvetica, Arial, sans-serif;height: 100%;width:100%;}
 .flex_start{display: flex; justify-content: flex-start;flex-wrap: wrap;}
 .flex_center_v{display: flex; justify-content: center;}
 .flex_start_v{display: flex; justify-content: flex-start; align-items: center;}
@@ -40,7 +40,7 @@ a{text-decoration: none;color: #4A4A4A;}
 .van-nav-bar__title{font-size: .36rem !important;color: #222222;}
 .van-nav-bar .van-icon{color: #222222;font-size: .28rem;}
 .van-nav-bar__text{font-size: .24rem;color: #222222;}
-.wallet .van-nav-bar{position: fixed;top: 0;width: 100%;}
+.wallet .van-nav-bar,.integralTrans .van-nav-bar{position: fixed;top: 0;width: 100%;}
 /*单选cell*/
 .van-cell{padding:.4rem .3rem;font-size:.28rem;color:#222222;border-bottom: 2px solid #e5e5e5;line-height: normal;}
 .van-cell:last-child{border: 0;}
