@@ -17,72 +17,21 @@
 						</ul>
 						<ul class="price">
 							<li class="state">购买积分价格</li>
-							<li class="money"><i>$</i>200</li>
+							<li class="money">$200</li>
 						</ul>
 						<ul class="await">
 							<li class="state">预付款</li>
-							<li class="money"><i>$</i>200<span>欠着</span></li>
+							<li class="money">$200<span>欠着</span></li>
 
 						</ul>
 						<ul class="tail">
 							<li class="state">尾款</li>
-							<li class="money"><i>$</i>20<span>不给了</span></li>
+							<li class="money">$20<span>不给了</span></li>
 
 						</ul>
 					</div>
 				</div>
 			</router-link>
-
-			<div class="list-single">
-				<div class="date">
-					今天
-				</div>
-				<div class="details">
-					<ul class="dingdan">
-						<li class="state">订单号</li>
-						<li class="money dingdan-right-li">111111</li>
-					</ul>
-					<ul class="price">
-						<li class="state">购买积分价格</li>
-						<li class="money"><i>$</i>200</li>
-					</ul>
-					<ul class="await">
-						<li class="state">预付款</li>
-						<li class="money"><i>$</i>200<span>已支付</span></li>
-
-					</ul>
-					<ul class="tail">
-						<li class="state">尾款</li>
-						<li class="money"><i>$</i>20<span>待支付</span></li>
-
-					</ul>
-				</div>
-			</div>
-			<div class="list-single">
-				<div class="date">
-					今天
-				</div>
-				<div class="details">
-					<ul class="dingdan">
-						<li class="state">订单号</li>
-						<li class="money dingdan-right-li">111111</li>
-					</ul>
-					<ul class="price">
-						<li class="state">购买积分价格</li>
-						<li class="money"><i>$</i>200</li>
-					</ul>
-					<ul class="await">
-						<li class="state">预付款</li>
-						<li class="money"><i>$</i>200<span>已支付</span></li>
-
-					</ul>
-					<ul class="tail">
-						<li class="state">尾款</li>
-						<li class="money"><i>$</i>20<span>待支付</span></li>
-
-					</ul>
-				</div>
-			</div>
 		</div>
 		<div class="integral-maichu-list" v-if="checkIndex == 1">
 			<router-link to="/saleOrderDetails">
@@ -97,37 +46,17 @@
 						</ul>
 						<ul class="price">
 							<li class="state">购买积分价格</li>
-							<li class="money"><i>$</i>200</li>
+							<li class="money">$200</li>
 						</ul>
 						<ul class="status">
 							<li class="state">卖出状态</li>
-							<li class="money"><i>$</i>200<span>匹配中</span></li>
+							<li class="money">$200<span>匹配中</span></li>
 						</ul>
 					</div>
 				</div>
 			</router-link>
-			<div class="list-single">
-				<div class="date">
-					今天
-				</div>
-				<div class="details">
-					<ul class="dingdan">
-						<li class="state">订单号</li>
-						<li class="money dingdan-right-li">111111</li>
-					</ul>
-					<ul class="price">
-						<li class="state">购买积分价格</li>
-						<li class="money"><i>$</i>200</li>
-					</ul>
-					<ul class="status">
-						<li class="state">卖出状态</li>
-						<li class="money"><i>$</i>200<span>确认已支付</span></li>
-					</ul>
-				</div>
-			</div>
 		</div>
 	</div>
-
 </template>
 
 <script>
@@ -192,7 +121,9 @@ ul li{
 }
 .date{
 	width: 100%;
-	height: 0.6rem;
+	height: .8rem;
+	line-height: .8rem;
+	padding-left: .3rem;
 	border-bottom: 1px solid #E9E9E9;
 }
 .details{
@@ -203,6 +134,7 @@ ul li{
 	width: 100%;
 	height: 0.6rem;
 	line-height: 0.6rem;
+	border-bottom: 1px solid #E5E5E5;
 }
 .dingdan-right-li{
 	text-align: right;
