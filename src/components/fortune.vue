@@ -1,5 +1,6 @@
 <template>
 	<div class="fortune">
+		<van-nav-bar title="福币收益" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<div class="" v-for="item in 4">
 			<p class="top_p">七月收益情况</p>
 			<div class="top_box">
@@ -30,7 +31,17 @@
 
 <script>
 	export default({
-		name: 'fortune'
+		name: 'fortune',
+		data () {
+			return {
+				
+			}
+		},
+		methods: {
+			onClickLeft () {
+				history.go(-1)
+			}
+		}
 	})
 </script>
 

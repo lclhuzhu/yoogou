@@ -31,7 +31,17 @@
 
 <script>
     export default {
-        name: "buyPayMoney"
+        name: "buyPayMoney",
+        data () {
+        	return {
+        		
+        	}
+        },
+        methods: {
+        	onClickLeft () {
+        		history.go(-1)
+        	}
+        }
     }
 </script>
 

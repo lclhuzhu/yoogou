@@ -26,7 +26,6 @@
 </script>
 
 <style scoped>
-.customer{padding-top: .8rem;}
 .flex_between_v{width: 100%;height: 1.2rem;padding: 0 .3rem;border-bottom: 2px solid #E5E5E5;background: #fff;}
 .flex_between_v:last-child{border: 0;}
 .list_p1{color: #666666;}

@@ -41,7 +41,6 @@
 
 <style scoped>
 .clo999 p{color: #999999 !important;}
-.integralTrans{padding-top: .88rem;}
 .top_div{width: 100%;height: 1.4rem;padding: 0 .3rem;background: #fff;border-bottom: 2px solid #E5E5E5;}
 .top_div:last-child{border: 0;}
 .top_p1{color: #222222;margin-bottom: .12rem;}

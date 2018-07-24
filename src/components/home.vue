@@ -1,5 +1,6 @@
 <template>
-	<div class="index">
+	<div class="home">
+		<van-nav-bar class='til' title="互助商城"/>
 		<div class="heard">
 			<van-swipe :autoplay="3000">
 			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
@@ -158,6 +159,7 @@
 
 <script>
 	export default({
+		name:'home',
 		data() {
 		    return {
 //		      images: [];

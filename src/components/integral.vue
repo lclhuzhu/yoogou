@@ -1,5 +1,6 @@
 <template>
 <div id="integral">
+	<van-nav-bar title="积分"/>
 	<div class="integral">
 		<div class="integral-icont">
 			积分购
@@ -66,7 +67,6 @@
 	.integral{
 		height: 3.2rem;
 		width: 100%;
-		margin-top: 0.2rem;
 		background: #fff;
 		box-sizing: border-box;
 	}
