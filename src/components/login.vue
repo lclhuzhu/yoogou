@@ -1,7 +1,7 @@
 <template>
 	<div class="login">
 		<img class="logo_img" src="@/assets/logo@2x.png"/>
-		<div class="til">
+		<div class="lo_til">
 			互助商城
 		</div>
 		<div class="com">
@@ -18,7 +18,7 @@
 	            <p class="getcode" v-if="show && codeshow" @click="getCode">获取验证码</p>
 	            <p class="getcode opt5" v-if="!show">{{count}}s后获取</p>
 			</div>
-			<p class="link_p">未注册？<router-link to='/regist'>前往注册</router-link></p>
+			<p class="link_p">未注册？<router-link to='/'>前往注册</router-link></p>
 		</div>
 		<div class="reg" v-if="phone && code" @click="logClick">
 			登录
@@ -48,26 +48,24 @@
 			// 获取验证码
 		    getCode () {
 		        let that = this
-		        Toast('获取成功')
-	          	that.codeGet()
-	          	return false
 		        that.$axios({
-		      	  	url: '/leaderapi/sendVerifyCode.action',
+		      	  	url: '/api/app/appUser/getVerificationCode',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		mobile: that.phone
+		          		phone: that.phone
 		        	})
 		      	}).then(res => {
-			        if (res.data.status === '0') {
+			        if (res.data.code == 0) {
 			          	Toast('获取成功')
 			          	that.codeGet()
 			        } else {
-			          	Toast(res.data.message)
+			          	Toast(res.data.msg)
 			        }
 		      	})
 		    },
 		    //倒计时
 		    codeGet () {
+		    	console.log(1)
 		        const TIME_COUNT = 60
 		        let that = this
 		        that.count = TIME_COUNT
@@ -86,17 +84,18 @@
 		    logClick () {
 		    	let that = this
 		        that.$axios({
-		      	  	url: '/leaderapi/sendVerifyCode.action',
+		      	  	url: '/api/app/appUser/login',
 		       		method: 'POST',
 		        	data: qs.stringify({
 		          		phone: that.phone,
-		          		code: that.code
+		          		verificationCode: that.code
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {
-			        	Toast(res.data.message)
+			        	Toast(res.data.msg)
+			        	that.$router.push({path:'/home'})
 			        } else {
-			          	Toast(res.data.message)
+			          	Toast(res.data.msg)
 			        }
 		      	})
 		    }
@@ -114,10 +113,10 @@
 </script>
 
 <style scoped>
-.login{overflow: hidden;height: 100%;background: #fff;}
+.login{overflow: hidden;height: 100%;background: #fff;position: absolute;width: 100%;top: 0;}
 .opt5{opacity: .5;}
-.logo_img{width: 1.8rem;height: 1.8rem;display: block;margin: auto;margin-top: 1.36rem;}
-.til{text-align: center;font-size: .32rem;color: #666666;}
+.logo_img{display: block;margin: auto;margin-top: 1.36rem;}
+.lo_til{text-align: center;font-size: .32rem;color: #666666;}
 .com{margin: 1.2rem .74rem .5rem .74rem;}
 .int_fle{display: flex;align-items: center;border-bottom: .02rem solid #bbbbbb;padding: .2rem 0;margin-bottom: .28rem;}
 .int_fle input{margin-left: .2rem; width: 100%;font-size: .3rem;border: 0;}

@@ -7,7 +7,7 @@
 				<div class="">
 					<p>137****9534</p>
 					<div class="flex_start_v">
-						<img class="hy_img" src="../../build/logo.png"/>
+						<img class="" src="@/assets/dj@2x.png"/>
 						<span class="font12">二级会员</span>
 					</div>
 				</div>				
