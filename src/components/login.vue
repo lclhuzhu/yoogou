@@ -65,7 +65,6 @@
 		    },
 		    //倒计时
 		    codeGet () {
-		    	console.log(1)
 		        const TIME_COUNT = 60
 		        let that = this
 		        that.count = TIME_COUNT
@@ -93,6 +92,7 @@
 		      	}).then(res => {
 			        if (res.data.code == 0) {
 			        	Toast(res.data.msg)
+			        	localStorage.setItem('userId',res.data.data.userId)
 			        	that.$router.push({path:'/home'})
 			        } else {
 			          	Toast(res.data.msg)

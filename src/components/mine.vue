@@ -5,7 +5,7 @@
 			<div class="flex_start_v top_tel">
 				<img class="tx_img" src="@/assets/tx@2x.png"/>
 				<div class="">
-					<p>137****9534</p>
+					<p>{{phoneSlice}}</p>
 					<div class="flex_start_v">
 						<img class="" src="@/assets/dj@2x.png"/>
 						<span class="font12">二级会员</span>
@@ -43,7 +43,7 @@
 						<p class="top_p2">2000</p>
 					</div>
 					<div class="flex_start">
-						<p class="top_p1">冻结中订单数</p>
+						<p class="top_p1">可卖出订单数</p>
 						<p class="top_p2">2000</p>
 					</div>
 					<div class="flex_start">
@@ -122,14 +122,50 @@
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
 	export default({
 		name: 'mine',
 		data () {
 			return {
-				
+				telephone: '11111111111',			//手机号
+				buyOrderNum: 0,						//买入订单数
+				cansaleOrder: 0,					//可卖出订单数
+				freezeOrderNum: 0,					//冻结中订单数
+				price: 0,							//冻结金额
+				saleOrderNum: 0,					//卖出中订单数
+				salePrice: 0,						//
+				scheduleMoney: 0,					//
+				scheduleProfit: 0,					//
+				userGradeName: 0,					//
+			}
+		},
+		created () {
+			this.getdeatil()
+		},
+		computed: {
+			phoneSlice () {
+				return this.telephone.slice(0,3) + '****' + this.telephone.slice(7,11)
 			}
 		},
 		methods: {
+			//账户资料
+			getdeatil () {
+				let that = this
+		        that.$axios({
+		      	  	url: '/api/app/walletInfo/getWalletInfo',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			          	that.telephone = res.data.data.telephone
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+			},
 			pass () {
 				// 未设置二级密码
 				// this.$router.push({path:'/secondLevel'})
