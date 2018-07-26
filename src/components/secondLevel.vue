@@ -1,6 +1,6 @@
 <template>
 	<div class="secondLevel">
-		<van-nav-bar title="添加钱包地址" left-text="返回" left-arrow @click-left="onClickLeft"/>
+		<van-nav-bar title="二级密码" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<div class="add_div">
 			<p>请输入您要设置的二级密码：</p>
 			<input type="text" name="" id="" value="" v-model="first" placeholder="请输入6-20位字符"/>
@@ -40,7 +40,7 @@
 		    onClickLeft () {
 		        history.go(-1)
 		    },
-		    //提交
+		    //设置二级密码
 		    sub () {
 		    	let that = this
 		    	if(that.first != that.second){
@@ -51,6 +51,21 @@
 		    		Toast('请输入6-20位字符')
 		    		return false
 		    	}
+		    	that.$axios({
+		      	  	url: '/api/app/appUser/recoveredPassword',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId'),
+		          		password: that.first,
+		          		passwordVerify: that.second
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.show = true
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
 		    }
 		}
 	})

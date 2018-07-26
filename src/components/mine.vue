@@ -8,7 +8,7 @@
 					<p>{{phoneSlice}}</p>
 					<div class="flex_start_v">
 						<img class="" src="@/assets/dj@2x.png"/>
-						<span class="font12">二级会员</span>
+						<span class="font12">{{ userGradeName }}级会员</span>
 					</div>
 				</div>				
 			</div>			
@@ -18,37 +18,37 @@
 				<div class="flex_clu_v">
 					<div class="flex_start">
 						<p class="top_p1">冻结金额</p>
-						<p class="top_p2">2000</p>
+						<p class="top_p2">{{ price }}</p>
 					</div>
 					<div class="flex_start">
 						<p class="top_p1">买入中订单数</p>
-						<p class="top_p2">2</p>
+						<p class="top_p2">{{buyOrderNum}}</p>
 					</div>
 					<div class="flex_start">
 						<p class="top_p1">卖出中订单数</p>
-						<p class="top_p2">1</p>
+						<p class="top_p2">{{ saleOrderNum }}</p>
 					</div>
 					<div class="flex_start">
 						<p class="top_p1">排单币</p>
-						<p class="top_p2">0</p>
+						<p class="top_p2">{{ scheduleMoney }}</p>
 					</div>
 				</div>
 				<div class="flex_clu_v">
 					<div class="flex_start">
 						<p class="top_p1">售出钱包</p>
-						<p class="top_p2">2000</p>
+						<p class="top_p2">{{ salePrice }}</p>
 					</div>
 					<div class="flex_start">
 						<p class="top_p1">冻结中订单数</p>
-						<p class="top_p2">2000</p>
+						<p class="top_p2">{{ freezeOrderNum }}</p>
 					</div>
 					<div class="flex_start">
 						<p class="top_p1">可卖出订单数</p>
-						<p class="top_p2">2000</p>
+						<p class="top_p2">{{ cansaleOrder }}</p>
 					</div>
 					<div class="flex_start">
 						<p class="top_p1">直推收益</p>
-						<p class="top_p2">2000</p>
+						<p class="top_p2">{{ scheduleProfit }}</p>
 					</div>
 				</div>
 			</div>
@@ -134,10 +134,10 @@
 				freezeOrderNum: 0,					//冻结中订单数
 				price: 0,							//冻结金额
 				saleOrderNum: 0,					//卖出中订单数
-				salePrice: 0,						//
-				scheduleMoney: 0,					//
-				scheduleProfit: 0,					//
-				userGradeName: 0,					//
+				salePrice: 0,						//售出钱包
+				scheduleMoney: 0,					//排单币
+				scheduleProfit: 0,					//直推收益
+				userGradeName: 0,					//用户会员名称
 			}
 		},
 		created () {
@@ -161,6 +161,15 @@
 		      	}).then(res => {
 			        if (res.data.code == 0) {
 			          	that.telephone = res.data.data.telephone
+			          	that.buyOrderNum = res.data.data.buyOrderNum
+			          	that.cansaleOrder = res.data.data.cansaleOrder
+			          	that.freezeOrderNum = res.data.data.freezeOrderNum
+			          	that.price = res.data.data.price
+			          	that.saleOrderNum = res.data.data.saleOrderNum
+			          	that.salePrice = res.data.data.salePrice
+			          	that.scheduleMoney = res.data.data.scheduleMoney
+			          	that.scheduleProfit = res.data.data.scheduleProfit
+			          	that.userGradeName = res.data.data.userGradeName
 			        } else {
 			          	Toast(res.data.msg)
 			        }

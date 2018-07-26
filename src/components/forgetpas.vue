@@ -11,11 +11,11 @@
 		</div>
 		<div class="add_div padtop0">
 			<p>请输入您要设置的二级密码：</p>
-			<input type="text" name="" id="" value="" v-model="first" placeholder="请输入6-20位字符"/>
+			<input type="password" name="" id="" value="" v-model="first" placeholder="请输入6-20位字符"/>
 		</div>
 		<div class="add_div padtop0">
 			<p>请再输入一次：</p>
-			<input type="text" name="" id="" value="" v-model="second" placeholder="请输入6-20位字符"/>
+			<input type="password" name="" id="" value="" v-model="second" placeholder="请输入6-20位字符"/>
 		</div>
 		<div class="peo_bom">
 			<div class="sub" v-if="code && first && second" @click="sub">
@@ -58,17 +58,14 @@
 		    // 获取验证码
 		    getCode () {
 		        let that = this
-		        Toast('获取成功')
-	          	that.codeGet()
-	          	return false
 		        that.$axios({
-		      	  	url: '/leaderapi/sendVerifyCode.action',
+		      	  	url: '/api/app/appUser/getVerificationCodeByUserId',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		mobile: that.phone
+		          		userId: localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
-			        if (res.data.status === '0') {
+			        if (res.data.code == 0) {
 			          	Toast('获取成功')
 			          	that.codeGet()
 			        } else {
@@ -103,6 +100,22 @@
 		    		Toast('请输入6-20位字符')
 		    		return false
 		    	}
+		    	that.$axios({
+		      	  	url: '/api/app/appUser/getBackPassword',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId'),
+		          		verificationCode: that.code,
+		          		password: that.first,
+		          		passwordVerify: that.second
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.show = true
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
 		    }
 		}
 	})

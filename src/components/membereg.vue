@@ -7,7 +7,7 @@
 				<input type="" name="" id="" value="" v-model="phone" class="int" placeholder="请输入手机号"/>
 			</div>
 			<div class="flex_between_v code_div">
-				<p class="top_p">手机号</p>
+				<p class="top_p">验证码</p>
 				<input type="" name="" id="" value="" v-model="code" class="int" placeholder="请输入验证码"/>
 				<p class="getcode opt4" v-if="show && !codeshow">获取验证码</p>
 	            <p class="getcode" v-if="show && codeshow" @click="getCode">获取验证码</p>
@@ -16,7 +16,10 @@
 		</div>
 		<p class="bom_p">*推荐人为当前账户（获取用户的账户名）</p>
 		<div class="peo_bom">
-			<div class="sub">
+			<div class="sub" v-if="phone && code" @click="sub">
+				注册
+			</div>
+			<div class="sub opt4" v-else>
 				注册
 			</div>
 		</div>
@@ -79,6 +82,25 @@
 		            that.timer = null
 		        }
 		      }, 1000)
+		    },
+		    //注册提交
+		    sub () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/appUser/registerSelf',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId'),
+		          		phone: that.phone,
+		          		verificationCode: that.code
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	Toast(res.data.msg)
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
 		    },
 		},
 		watch: {

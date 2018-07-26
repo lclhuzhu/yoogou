@@ -3,28 +3,28 @@
 		<van-nav-bar title="预约买入" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<van-radio-group v-model="radio">
 		    <van-cell-group>
-		   		<van-cell title="8天一单1" clickable @click="radio = '1'">
-		      		<van-radio name="1" />
+		   		<van-cell title="8天一单1" clickable @click="radio = '4'">
+		      		<van-radio name="4" />
 			    </van-cell>
-			    <van-cell title="9天一单" clickable @click="radio = '2'">
-			      	<van-radio name="2" />
+			    <van-cell title="9天一单" clickable @click="radio = '5'">
+			      	<van-radio name="5" />
 			    </van-cell>
-			    <van-cell title="10天一单" clickable @click="radio = '3'">
-		      		<van-radio name="3" />
+			    <van-cell title="10天一单" clickable @click="radio = '6'">
+		      		<van-radio name="6" />
 			    </van-cell>
-			    <van-cell title="11天一单" clickable @click="radio = '4'">
-			      	<van-radio name="4" />
+			    <van-cell title="11天一单" clickable @click="radio = '7'">
+			      	<van-radio name="7" />
 			    </van-cell>
-			    <van-cell title="12天一单" clickable @click="radio = '5'">
-		      		<van-radio name="5" />
+			    <van-cell title="12天一单" clickable @click="radio = '8'">
+		      		<van-radio name="8" />
 			    </van-cell>
-			    <van-cell title="不使用" clickable @click="radio = '6'">
-			      	<van-radio name="6" />
+			    <van-cell title="不使用" clickable @click="radio = '0'">
+			      	<van-radio name="0" />
 			    </van-cell>
 		  	</van-cell-group>
 		</van-radio-group>
 		<div class="peo_bom">
-			<div class="sub">
+			<div class="sub" @click="subuy">
 				保存
 			</div>
 		</div>
@@ -32,18 +32,59 @@
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
 	export default({
 		name: 'orbuying',
 		data () {
 			return {
-				radio: '1'
+				radio: '',				//选择类型
 			}
+		},
+		created () {
+			
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
 		        history.go(-1)
-		    }
+		    },
+		    //获取状态
+		    getbuy () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/automaticOrder/getAutoBuyType',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.radio = res.data.data.autoType
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //预约买入选取
+		    subuy () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/automaticOrder/setAutoBuy',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId'),
+		          		autoType: that.radio,
+		          		passWord: 22
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
 		}
 	})
 </script>

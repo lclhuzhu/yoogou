@@ -1,17 +1,17 @@
 <template>
 	<div class="wallet">
 		<van-nav-bar title="钱包地址" left-text="返回" left-arrow @click-left="onClickLeft"/>
-		<div class="wal_list flex_between_v" v-for="item in 8" v-if="0">
+		<div class="wal_list flex_between_v" v-for="item in list" :key='item.id'>
 			<div class="">
 				<p class="wal_p0">钱包地址</p>
-				<p class="wal_p1">DGDSGFHFDfgfsfsd</p>
+				<p class="wal_p1">{{ item.address }}</p>
 			</div>
 			<div class="">
-				<p class="wal_p2 flex_between_v"><img src="@/assets/mr@2x.png"/>设为默认</p>
-				<p class="wal_p3">删除</p>
+				<p class="wal_p2 flex_between_v" @click="defaul(item.id)"><img src="@/assets/mr@2x.png"/>设为默认</p>
+				<p class="wal_p3" @click="delpop(item.id)">删除</p>
 			</div>
 		</div>
-		<div class="ws">
+		<div class="ws" v-if="list.length == 0">
 			<img src="../assets/ws@2x.png"/>
 			<p>您还未配置钱包地址</p>
 		</div>
@@ -25,7 +25,7 @@
 			<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
 			<p class="pop_p1">确认删除？</p>
 			<div class="flex_center">
-				<p class="pop_p2" @click="show = false">确认</p>
+				<p class="pop_p2" @click="delsub">确认</p>
 				<p class="pop_p3" @click="show = false">取消</p>
 			</div>
 		</van-popup>
@@ -33,18 +33,84 @@
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
 	export default({
 		name: 'wallet',
 		data () {
 			return {
-				show: true,					//弹窗
+				show: false,					//弹窗
+				list: [],						//地址列表
+				id: ''							//地址id
 			}
+		},
+		created () {
+			this.addsub()
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
-		        history.go(-1)
+		        this.$router.push({path:'/mine'})
 		    },
+		    //获取列表
+		    addsub () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/walletAddress/getWalletAddress',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			          	that.list = res.data.data
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //设为默认
+		    defaul (e) {
+		    	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/walletAddress/setDefaultWalletAddress',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		        		id: e,
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			          	Toast(res.data.msg)
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //删除弹窗
+		    delpop (e) {
+		    	this.id = e
+		    	this.show = true
+		    },
+		    //删除
+		    delsub () {
+		    	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/walletAddress/deleteWalletAddress',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		        		id: that.id
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			          	Toast(res.data.msg)
+			          	that.addsub()
+			          	that.show = false
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    }
 		}
 	})
 </script>
@@ -53,7 +119,7 @@
 .opy4{opacity: .4;}
 .ws{text-align: center;}
 .ws p{color: #888888;}
-.wallet{padding-bottom: 1.14rem;padding-top: .88rem;}
+.wallet{padding-bottom: 1.14rem;}
 .peo_bom{background: #FFFFFF;position: fixed;bottom: 0;padding: .26rem .5rem;width: 100%;}
 .sub{width: 100%;height: .88rem;display: inline-block;line-height: .88rem; background-image: linear-gradient(-90deg, #FF9400 0%, #FF6808 100%);border-radius: 44px;text-align: center;color: #fff;font-size: .32rem;}
 .wal_list{width: 100%;height: 1.6rem;background: #FFFFFF;border-bottom: 2px solid #E5E5E5;padding: 0 .3rem;}

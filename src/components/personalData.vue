@@ -3,17 +3,19 @@
 		<van-nav-bar title="个人资料" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<div class="flex_between">
 			<p>昵称</p>
-			<input type="text" placeholder="请填写" v-model="name"/>
+			<input type="text" placeholder="请填写" v-model="name" v-if="existence == 0"/>
+			<p class="int_p" v-else>{{ name }}</p>
 		</div>
 		<div class="flex_between">
 			<p>支付宝</p>
-			<input type="text" placeholder="请填写" v-model="alipay"/>
+			<input type="text" placeholder="请填写" v-model="alipay" v-if="existence == 0"/>
+			<p class="int_p" v-else>{{ alipay }}</p>
 		</div>
 		<div class="peo_bom">
-			<div class="sub" v-if="name && alipay" @click="sub">
+			<div class="sub" v-if="(name && alipay) && (existence == 0)" @click="sub">
 				保存
 			</div>
-			<div class="sub opy4" v-else="">
+			<div class="sub opy4" v-else>
 				保存
 			</div>
 		</div>
@@ -33,32 +35,60 @@
 		name: 'personalData',
 		data () {
 			return {
+				existence: 0,					//是否存在信息 0不存在 1存在
 				name: '',
 				alipay: '',
-				show: true,					//弹窗
+				show: false,					//弹窗
 			}
+		},
+		created () {
+			this.getInfo()
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
 		      history.go(-1)
 		    },
-		    //保存
-		    sub () {
-	          	that.codeGet()
-	          	return false
+		    //获取信息
+		    getInfo () {
+	          	let that = this
 		        that.$axios({
-		      	  	url: '/leaderapi/sendVerifyCode.action',
+		      	  	url: '/api/app/appUserInfo/getAppUserInfo',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		name: that.name,
-		          		alipay: that.alipay
+		          		userId: localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
-			        if (res.data.status == 0) {
-			          	that.$router.push({path:'/mine'})
+			        if (res.data.code == 0) {
+			          	that.name = res.data.data.nickName
+			          	that.alipay = res.data.data.alipayAccount
+			          	if (that.name || that.alipay) {
+			          		that.existence = 1
+			          		that.show = true
+			          	}else{
+			          		that.existence = 0
+			          	}
 			        } else {
-			          	Toast(res.data.message)
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //保存
+		    sub () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/appUserInfo/setAppUserInfo',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		alipayAccount: that.alipay,
+		          		nickName: that.name,
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			          	Toast(res.data.msg)
+			        } else {
+			          	Toast(res.data.msg)
 			        }
 		      	})
 		    }
@@ -78,4 +108,5 @@
 .close{position: absolute;right: .3rem;color: #D2D2D2;}
 .pop_p1{margin: .76rem 0 .58rem 0;font-size: .32rem;}
 .pop_p2{padding: .26rem 0;width: 2.4rem;text-align: center;margin: auto; background-image: linear-gradient(-90deg, #FF9400 0%, #FF6808 100%);border-radius: 100px;color: #fff;font-size: .32rem;}
+.int_p{color: #222222 !important;}
 </style>

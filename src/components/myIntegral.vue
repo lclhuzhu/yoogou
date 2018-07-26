@@ -1,26 +1,29 @@
 <template>
 	<div class="myIntegral">
 		<van-nav-bar title="积分" left-text="返回" left-arrow @click-left="onClickLeft"/>
-		<div class="flex_between_v bor1">
+		<div class="flex_between_v bor1" v-if='isTrust == 0' @click="trust">
 			<p>托管本账号</p>
+			<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
+		</div>
+		<div class="flex_between_v bor1" v-if='isTrust == 1' @click="tgshow = true">
+			<p>取消托管</p>
 			<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 		</div>
 		<div class="flex_between_v" @click="tolink">
 			<p>查看被托管人账户</p>
 			<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 		</div>
-		<!--弹出框-->
+		<!--托管弹出框-->
 		<van-popup v-model="show">
 			<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
-			<p class="pop_p1" v-if="0">暂无被托管人</p>
-			<p class="pop_p1">您的账户已托管至您的直接推荐人！</p>
+			<p class="pop_p1">{{ msg }}</p>
 		</van-popup>
-		<!--弹出框-->
+		<!--取消托管弹出框-->
 		<van-popup v-model="tgshow">
-			<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
+			<p class="pop_til"><span>提示</span><span class="close" @click="tgshow = false">X</span></p>
 			<p class="pop_p1">确认取消托管账户？</p>
 			<div class="flex_center">
-				<p class="pop_p2" @click="tgshow = false">确认</p>
+				<p class="pop_p2" @click="cancel">确认</p>
 				<p class="pop_p3" @click="tgshow = false">取消</p>				
 			</div>
 		</van-popup>
@@ -28,18 +31,73 @@
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
 	export default({
 		name: 'myIntegral',
 		data () {
 			return {
-				show: false,
-				tgshow: true
+				show: false,					//无托管人
+				tgshow: false,					//取消托管
+				isTrust: 0,						//托管状态 0为托管 1已托管
+				msg:'',							//弹窗信息
 			}
+		},
+		created () {
+			this.isTrust = localStorage.getItem('isTrust')
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
 		        history.go(-1)
+		    },
+		    //托管账号
+		    trust () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/appUser/trustUser',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.msg = res.data.msg
+			        	that.isTrust = 1
+			        	localStorage.setItem('isTrust','1')
+			        	that.show = true
+			        } else if (res.data.code == -1) {
+			        	Toast(res.data.msg)
+			        	that.isTrust = 0
+			        	localStorage.setItem('isTrust','0')
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //取消托管
+		    cancel () {
+		    	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/appUser/cancelTrustUser',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.isTrust = 0
+			        	Toast(res.data.msg)
+			        	localStorage.setItem('isTrust','0')
+			        	that.tgshow = false
+			        } else if (res.data.code == -1) {
+			        	Toast(res.data.msg)
+			        	that.isTrust = 1
+			        	localStorage.setItem('isTrust','1')
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
 		    },
 		    //进入积分
 		    tolink () {

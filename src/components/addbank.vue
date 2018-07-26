@@ -5,7 +5,10 @@
 			<input type="text" placeholder="请输入所属银行" v-model="bank" />
 		</div>
 		<div class="peo_bom">
-			<div class="sub">
+			<div class="sub" v-if="bank" @click="subank">
+				保存
+			</div>
+			<div class="sub opy4" v-else>
 				保存
 			</div>
 		</div>
@@ -25,11 +28,17 @@
 		    onClickLeft () {
 		        history.go(-1)
 		    },
+		    //确定选择
+		    subank () {
+		    	localStorage.setItem('bank',this.bank)
+		    	this.$router.push({path:'/bankAccount'})
+		    }
 		}
 	})
 </script>
 
 <style scoped>
+.opy4{opacity: .4;}
 .top{width: 100%;height: .96rem;background: #fff;padding: .28rem .3rem;}
 .top input{border: 0;}
 /*保存*/

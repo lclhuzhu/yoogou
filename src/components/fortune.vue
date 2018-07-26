@@ -1,46 +1,74 @@
 <template>
 	<div class="fortune">
 		<van-nav-bar title="福币收益" left-text="返回" left-arrow @click-left="onClickLeft"/>
-		<div class="" v-for="item in 4">
-			<p class="top_p">七月收益情况</p>
-			<div class="top_box">
-				<div class="top_com">
-					<p class="date_p1">第五周</p>
-					<p class="date_p2">6666</p>
-				</div>
-				<div class="top_com">
-					<p class="date_p1">第四周</p>
-					<p class="date_p2">6666</p>
-				</div>
-				<div class="top_com">
-					<p class="date_p1">第三周</p>
-					<p class="date_p2">6666</p>
-				</div>
-				<div class="top_com">
-					<p class="date_p1">第二周</p>
-					<p class="date_p2">6666</p>
-				</div>
-				<div class="top_com">
-					<p class="date_p1">第一周</p>
-					<p class="date_p2">6666</p>
+		<van-list class="all li_box" v-model="loading" :finished="finished" @load="onLoad">
+			<div class="" v-for="(item, index) in list" :key='item.msg'>
+				<p class="top_p">{{ item.msg }}</p>
+				<div class="top_box">
+					<div class="top_com" v-for="(dateList, index) in item.list" :key='index'>
+						<p class="date_p1">{{ dateList.week }}</p>
+						<p class="date_p2">{{ dateList.money }}</p>
+					</div>
 				</div>
 			</div>
-		</div>
+		</van-list>
 	</div>
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
 	export default({
 		name: 'fortune',
 		data () {
 			return {
-				
+				list: [],					//月份列表
+				pageNum: 1,					//当前页数
+				loading: false,
+      			finished: false
 			}
+		},
+		created () {
+			this.addlist(1)
 		},
 		methods: {
 			onClickLeft () {
 				history.go(-1)
-			}
+			},
+			//加载
+			onLoad() {
+				let that = this
+				let pageNum = that.pageNum
+				setTimeout(() => {
+			        that.addlist(pageNum)
+		      	}, 500)
+		    },
+			//获取列表
+			addlist (pageNum) {
+				let that = this
+				that.pageNum = that.pageNum + 1
+				that.$axios({
+			        url: '/api/app/coinsRecord/findCoinRecord',
+			        method: 'POST',
+			        data: qs.stringify({
+			        	pageNum: pageNum,
+			        	userId: localStorage.getItem('userId'),
+			        	pageSize: 5
+			        })
+			    }).then(res => {
+			    	if(res.data.code == 0){
+			    		for (let i = 0; i < res.data.data.length; i++) {
+				          	that.list.push(res.data.data[i]);
+				      	}
+			    		that.loading = false
+			    		if ( pageNum >= res.data.page.pages) {
+			    			that.finished = true
+			    		}
+			    	} else {
+			    		Toast(res.data.msg)	
+			    	}
+			    })
+			},
 		}
 	})
 </script>

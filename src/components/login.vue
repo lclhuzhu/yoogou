@@ -41,7 +41,8 @@
 			 	timer: null,				//倒计时事件
 			 	codeshow: false,			//否不可点击
 				phone:'',
-				code: ''
+				code: '',
+				isTrust: 0					//托管状态 0为托管   1已托管
 			}
 		},
 		methods: {
@@ -93,6 +94,7 @@
 			        if (res.data.code == 0) {
 			        	Toast(res.data.msg)
 			        	localStorage.setItem('userId',res.data.data.userId)
+			        	localStorage.setItem('isTrust',res.data.data.isTrust)
 			        	that.$router.push({path:'/home'})
 			        } else {
 			          	Toast(res.data.msg)

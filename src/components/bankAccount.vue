@@ -7,7 +7,8 @@
 		</div>
 		<div class="flex_between">
 			<p>所属银行</p>
-			<input type="text" placeholder="请填写" v-model="bank" @keyup="bankkey"/>
+			<div style="color: #222;" @click="bankLink" v-if="bank != '选择银行'">{{ bank }}</div>
+			<div @click="bankLink" v-else>{{ bank }}</div>
 		</div>
 		<div class="flex_between">
 			<p>支行名称</p>
@@ -40,30 +41,36 @@
 		name: 'bankAccount',
 		data () {
 			return {
-				name: '',
-				bank: '',
-				branch: '',
-				card: ''
+				name: '',					//用户名称
+				bank: '选择银行',			//开户行
+				branch: '',					//开户支行
+				card: ''					//银行账户
 			}
 		},
 		created () {
-			if(localStorage.setItem('name',this.name)){
-				this.name = localStorage.setItem('name',this.name)
+			this.getInfo()
+			if(localStorage.getItem('name')){
+				console.log(2)
+				this.name = localStorage.getItem('name')
 			}
-			if(localStorage.setItem('name',this.bank)){
-				this.bank = localStorage.setItem('name',this.bank)
+			if(localStorage.getItem('bank')){
+				this.bank = localStorage.getItem('bank')
 			}
-			if(localStorage.setItem('name',this.branch)){
-				this.branch = localStorage.setItem('name',this.branch)
+			if(localStorage.getItem('branch')){
+				this.branch = localStorage.getItem('branch')
 			}
-			if(localStorage.setItem('name',this.card)){
-				this.card = localStorage.setItem('name',this.card)
+			if(localStorage.getItem('card')){
+				this.card = localStorage.getItem('card')
 			}
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
-		      history.go(-1)
+		    	localStorage.removeItem('card')
+	        	localStorage.removeItem('bank')
+	        	localStorage.removeItem('branch')
+	        	localStorage.removeItem('name')
+		        this.$router.push({path:'/mine'})
 		    },
 		    namekey () {
 		    	localStorage.setItem('name',this.name)
@@ -77,22 +84,66 @@
 		    cardkey () {
 		    	localStorage.setItem('card',this.card)
 		    },
-		    //保存
-		    sub () {
-	          	that.codeGet()
-	          	return false
-		        that.$axios({
-		      	  	url: '/leaderapi/sendVerifyCode.action',
+		    //跳转选择银行
+		    bankLink () {
+		    	this.$router.push({path:'/bank'})
+		    },
+		    //获取信息
+		    getInfo () {
+		    	let that = this
+		    	that.$axios({
+		      	  	url: '/api/app/bankInfo/getInfo',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		name: that.name,
-		          		alipay: that.alipay
+		          		userId:localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
-			        if (res.data.status == 0) {
-			          	that.$router.push({path:'/mine'})
+			        if (res.data.code == 0) {			        	
+		          		that.card = res.data.data.account
+		          		that.bank = res.data.data.openBank
+		          		that.branch = res.data.data.openBranchBank
+		          		that.name = res.data.data.userName
+		          		that.$nextTick(()=>{
+		          			if(localStorage.getItem('name')){
+								that.name = localStorage.getItem('name')
+							}
+							if(localStorage.getItem('bank')){
+								that.bank = localStorage.getItem('bank')
+							}
+							if(localStorage.getItem('branch')){
+								that.branch = localStorage.getItem('branch')
+							}
+							if(localStorage.getItem('card')){
+								that.card = localStorage.getItem('card')
+							}
+		          		})
 			        } else {
-			          	Toast(res.data.message)
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //保存
+		    sub () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/bankInfo/insertInfo',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		account: that.card,
+		          		openBank: that.bank,
+		          		openBranchBank:that.branch,
+		          		userName: that.name,
+		          		userId:localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	localStorage.removeItem('card')
+			        	localStorage.removeItem('bank')
+			        	localStorage.removeItem('branch')
+			        	localStorage.removeItem('name')
+			          	Toast(res.data.msg)
+			        } else {
+			          	Toast(res.data.msg)
 			        }
 		      	})
 		    }

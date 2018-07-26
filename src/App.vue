@@ -43,6 +43,9 @@ a{text-decoration: none;color: #4A4A4A;}
 .wallet .van-nav-bar,.integralTrans .van-nav-bar{position: fixed;top: 0;width: 100%;}
 .til{background-image: linear-gradient(-90deg, #FF9400 100%, #FF6808 0%);}
 .til .van-nav-bar__title{color: #fff;}
+/*加载样式*/
+.van-list__loading .van-loading{width:.32rem;height: .32rem;margin-right: .1rem;}
+.van-list__loading-text{font-size: .26rem;line-height: 1rem;}
 /*单选cell*/
 .van-cell{padding:.4rem .3rem;font-size:.28rem;color:#222222;border-bottom: 2px solid #e5e5e5;line-height: normal;}
 .van-cell:last-child{border: 0;}

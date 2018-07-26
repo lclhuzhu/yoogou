@@ -10,10 +10,10 @@
 			<p class="sp3">说明：开启预约卖出后，冻结期变为15（根据<br/>配置的天数+5计数）天，15天后自动卖出。</p>
 		</div>
 		<div class="peo_bom">
-			<div class="sub" @click="enable = !enable" v-if="!enable">
+			<div class="sub" @click="settype(1)" v-if="!enable">
 				启用
 			</div>
-			<div class="sub canle" @click="enable = !enable" v-if="enable">
+			<div class="sub canle" @click="settype(0)" v-if="enable">
 				取消预约卖出
 			</div>
 		</div>
@@ -21,18 +21,56 @@
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
 	export default({
 		name:'orselling',
 		data () {
 			return {
-				enable: false
+				enable: false,					//是否开启
 			}
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
 		        history.go(-1)
-		    }
+		    },
+		    //获取状态
+		    gettype () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/automaticOrder/getAutoSaleType',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.enable = true
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //设置状态
+		    settype (e) {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/automaticOrder/setAutoSale',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId'),
+		          		autoType: e,
+		          		passWord: 222		          		
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.enable = true
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
+		    },
 		}
 	})
 </script>

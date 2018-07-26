@@ -3,15 +3,15 @@
 		<van-nav-bar title="修改二级密码" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<div class="add_div">
 			<p>请输入原有的二级密码</p>
-			<input type="text" name="" id="" value="" v-model="old" placeholder="请输入6-20位字符"/>
+			<input type="password" name="" id="" value="" v-model="old" placeholder="请输入6-20位字符"/>
 		</div>
 		<div class="add_div padtop0">
 			<p>请输入您要设置的二级密码：</p>
-			<input type="text" name="" id="" value="" v-model="first" placeholder="请输入6-20位字符"/>
+			<input type="password" name="" id="" value="" v-model="first" placeholder="请输入6-20位字符"/>
 		</div>
 		<div class="add_div padtop0">
 			<p>请再输入一次：</p>
-			<input type="text" name="" id="" value="" v-model="second" placeholder="请输入6-20位字符"/>
+			<input type="password" name="" id="" value="" v-model="second" placeholder="请输入6-20位字符"/>
 		</div>
 		<div class="peo_bom">
 			<div class="sub" v-if="old && first && second" @click="sub">
@@ -59,6 +59,22 @@
 		    		Toast('请输入6-20位字符')
 		    		return false
 		    	}
+		    	that.$axios({
+		      	  	url: '/api/app/appUser/updatePassword',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId'),
+		          		oldPassword: that.old,
+		          		password: that.first,
+		          		passwordVerify: that.second
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.show = true
+			        } else {
+			          	Toast(res.data.msg)
+			        }
+		      	})
 		    }
 		}
 	})
