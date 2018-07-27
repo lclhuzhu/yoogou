@@ -36,6 +36,8 @@
 		methods: {
 		    subint () {
 	          	let that = this
+	          	var url = ''
+	          	var data = ''
 	          	if (this.source == 0) {
 	          		var url = '/api/app/automaticOrder/setAutoBuy'
 	          		var data = {
