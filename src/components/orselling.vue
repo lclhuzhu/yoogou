@@ -1,39 +1,74 @@
 <template>
 	<div class="orselling">
 		<van-nav-bar title="预约卖出" left-text="返回" left-arrow @click-left="onClickLeft"/>
-		<img class="se_img" src="@/assets/wpic@2x.png" v-if="!enable"/>
-		<img class="se_img" src="@/assets/ypic@2x.png" v-if="enable"/>
+		<img class="se_img" src="@/assets/wpic@2x.png" v-if="enable == 0"/>
+		<img class="se_img" src="@/assets/ypic@2x.png" v-if="enable == 1"/>
 		<div class="">
 			<span class="sp1">当前状态:</span>
-			<span class="sp2" v-if="!enable">未开启</span>
-			<span class="sp4" v-if="enable">已开启</span>
+			<span class="sp2" v-if="enable == 0">未开启</span>
+			<span class="sp4" v-if="enable == 1">已开启</span>
 			<p class="sp3">说明：开启预约卖出后，冻结期变为15（根据<br/>配置的天数+5计数）天，15天后自动卖出。</p>
 		</div>
 		<div class="peo_bom">
-			<div class="sub" @click="settype(1)" v-if="!enable">
+			<div class="sub" @click="subuy(1)" v-if="enable == 0">
 				启用
 			</div>
-			<div class="sub canle" @click="settype(0)" v-if="enable">
+			<div class="sub canle" @click="subuy(0)" v-if="enable == 1">
 				取消预约卖出
 			</div>
 		</div>
+		<pass :source='source' :saleType='saleType' :passhow='passhow' @change='get'></pass>
 	</div>
 </template>
 
 <script>
 	import { Toast } from 'vant'
 	import qs from 'qs'
+	import pass from '@/components/intpassword.vue'
 	export default({
 		name:'orselling',
 		data () {
 			return {
-				enable: false,					//是否开启
+				enable: null,					//是否开启   0未开启 1开启
+				saleType: null,
+				source: 1,
+				passhow: false
 			}
+		},
+		created () {
+			this.gettype()
 		},
 		methods: {
 			//返回
 		    onClickLeft () {
 		        history.go(-1)
+		    },
+		    //关闭
+		    get () {
+		    	this.gettype()
+		    	this.passhow = false
+		    },
+		    //判断二级密码
+		    subuy (e) {
+	          	let that = this
+	          	that.saleType = e
+		        that.$axios({
+		      	  	url: '/api/app/appUser/checkPasswordSet',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.status = 0
+			        	that.passhow = true
+			        } else if (res.data.code == -1) {
+			        	Toast('请先设置二级密码')
+			        	that.status = -1
+			        	that.passhow = false
+			          	that.$router.push({path:'/secondnav'})
+			        }
+		      	})
 		    },
 		    //获取状态
 		    gettype () {
@@ -46,31 +81,15 @@
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {
-			        	that.enable = true
+			        	that.enable = res.data.data
 			        } else {
 			          	Toast(res.data.msg)
 			        }
 		      	})
-		    },
-		    //设置状态
-		    settype (e) {
-	          	let that = this
-		        that.$axios({
-		      	  	url: '/api/app/automaticOrder/setAutoSale',
-		       		method: 'POST',
-		        	data: qs.stringify({
-		          		userId: localStorage.getItem('userId'),
-		          		autoType: e,
-		          		passWord: 222		          		
-		        	})
-		      	}).then(res => {
-			        if (res.data.code == 0) {
-			        	that.enable = true
-			        } else {
-			          	Toast(res.data.msg)
-			        }
-		      	})
-		    },
+		    }
+		},
+		components: {
+			pass
 		}
 	})
 </script>

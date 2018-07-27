@@ -23,15 +23,16 @@
 		name: 'intpassword',
 		data () {
 			return {
-				//source: null,					//数据页面来源    0预约买入
+				//source: null,					//数据页面来源    0预约买入  1预约卖出
 				//autoType: ''.					//预约买入选取
+				//saleType: '',				    //预约卖出数据来源
 				//passhow: true,
 				closepop: false,
 				password: '',
-				show: false
+				show: false,
 			}
 		},
-		props: ['passhow', 'source','autoType'],
+		props: ['passhow', 'source','autoType', 'saleType'],
 		methods: {
 		    subint () {
 	          	let that = this
@@ -40,6 +41,13 @@
 	          		var data = {
 	          			userId: localStorage.getItem('userId'),
 		          		autoType: that.autoType,
+		          		passWord: that.password
+	          		}
+	          	} else if (this.source == 1) {
+	          		var url = '/api/app/automaticOrder/setAutoSale'
+	          		var data = {
+	          			userId: localStorage.getItem('userId'),
+		          		autoType: that.saleType,
 		          		passWord: that.password
 	          		}
 	          	}
