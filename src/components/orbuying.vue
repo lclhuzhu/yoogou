@@ -31,7 +31,7 @@
 				保存
 			</div>
 		</div>
-		<pass :source='source' :autoType='radio' :passhow='passhow' @change='get'></pass>
+		<pass :source='source' :autoType='radio' ref="c1"></pass>
 	</div>
 </template>
 
@@ -45,8 +45,7 @@
 			return {
 				radio: '8',				//选择类型
 				status: null,			//是否设置二级密码   0设置   -1未设置
-				source: 0,
-				passhow: false
+				source: 0
 			}
 		},
 		created () {
@@ -56,10 +55,6 @@
 			//返回
 		    onClickLeft () {
 		        history.go(-1)
-		    },
-		    //关闭
-		    get () {
-		    	this.passhow = false
 		    },
 		    //获取状态
 		    getbuy () {
@@ -78,26 +73,9 @@
 			        }
 		      	})
 		    },
-		    //判断二级密码
+		    //调用二级密码组件方法
 		    subuy () {
-	          	let that = this
-		        that.$axios({
-		      	  	url: '/api/app/appUser/checkPasswordSet',
-		       		method: 'POST',
-		        	data: qs.stringify({
-		          		userId: localStorage.getItem('userId')
-		        	})
-		      	}).then(res => {
-			        if (res.data.code == 0) {
-			        	that.status = 0
-			        	that.passhow = true
-			        } else if (res.data.code == -1) {
-			        	Toast('请先设置二级密码')
-			        	that.status = -1
-			        	that.passhow = false
-			          	that.$router.push({path:'/secondnav'})
-			        }
-		      	})
+        		this.$refs.c1.check()
 		    }		    
 		},
 		components: {

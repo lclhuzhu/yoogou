@@ -30,7 +30,7 @@ a{text-decoration: none;color: #4A4A4A;}
 .vertical_v{display: flex; align-items: center;}
 .flex_c{display: flex;flex-direction: column; align-items: center;}
 /*底部提交按钮样式*/
-.peo_bom{background: #FFFFFF;position: absolute;bottom: 0;padding: .26rem .5rem;width: 100%;border-top: 1px solid #E5E5E5;}
+.peo_bom{background: #FFFFFF;position: fixed;bottom: 0;padding: .26rem .5rem;width: 100%;border-top: 1px solid #E5E5E5;}
 .sub{width: 100%;height: .88rem;line-height: .88rem; background-image: linear-gradient(-90deg, #FF9400 0%, #FF6808 100%);border-radius: 44px;text-align: center;color: #fff;font-size: .32rem;}
 
 /*弹窗样式*/
@@ -56,10 +56,14 @@ a{text-decoration: none;color: #4A4A4A;}
 .buyinDetail .van-cell{padding:.26rem .3rem;font-size:.28rem;color:#222222;border:0;line-height: normal;}
 .buyinDetail .van-cell__value--alone{color: #666666;}
 /*标签样式*/
- 
-.IntegralDealList .van-tabs--line{padding-top: .88rem;width: 100%;}
-.IntegralDealList .van-tabs--line .van-tabs__wrap{height: .88rem;}
-.IntegralDealList .van-tabs__wrap--scrollable .van-tab{flex: 0 0 30%;}
-.IntegralDealList .van-tab{opacity: 0.8;}
-.IntegralDealList .van-tab{font-size:.28rem;line-height:.88rem;}
+.van-tabs--line{padding-top: .88rem;width: 100%;}
+.van-tabs--line .van-tabs__wrap{height: .88rem;}
+.van-tabs__wrap--scrollable .van-tab{flex: 0 0 30%;}
+.van-tab{opacity: 0.8;}
+.van-tab{font-size:.28rem;line-height:.88rem;}
+/*卖出列表单选*/
+.saleorder .van-tabs{position: fixed;top: .88rem;z-index: 5;}
+.saleorder .van-radio{background: #fff;margin-top: .2rem;padding: 0 .3rem;position: relative;color: #999999;font-size: .24rem;}
+.saleorder .van-radio__label{width: 100%;margin-left: 0;line-height: normal;}
+.saleorder .van-radio__input{position: absolute;top: .15rem;left: .3rem;}
 </style>

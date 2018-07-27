@@ -17,7 +17,7 @@
 				取消预约卖出
 			</div>
 		</div>
-		<pass :source='source' :saleType='saleType' :passhow='passhow' @change='get'></pass>
+		<pass :source='source' :saleType='saleType' ref="c1" @change='gettype'></pass>
 	</div>
 </template>
 
@@ -43,32 +43,12 @@
 		    onClickLeft () {
 		        history.go(-1)
 		    },
-		    //关闭
-		    get () {
-		    	this.gettype()
-		    	this.passhow = false
-		    },
 		    //判断二级密码
 		    subuy (e) {
 	          	let that = this
 	          	that.saleType = e
-		        that.$axios({
-		      	  	url: '/api/app/appUser/checkPasswordSet',
-		       		method: 'POST',
-		        	data: qs.stringify({
-		          		userId: localStorage.getItem('userId')
-		        	})
-		      	}).then(res => {
-			        if (res.data.code == 0) {
-			        	that.status = 0
-			        	that.passhow = true
-			        } else if (res.data.code == -1) {
-			        	Toast('请先设置二级密码')
-			        	that.status = -1
-			        	that.passhow = false
-			          	that.$router.push({path:'/secondnav'})
-			        }
-		      	})
+		        //调用二级密码组件方法
+        		that.$refs.c1.check()
 		    },
 		    //获取状态
 		    gettype () {

@@ -2,7 +2,7 @@
 	<div class="intpassword">
 		<!--二级密码弹窗-->
 		<van-popup v-model="passhow" :close-on-click-overlay='closepop'>
-			<p class="pop_til"><span>提示</span><span class="close" @click="close">X</span></p>
+			<p class="pop_til"><span>提示</span><span class="close" @click="passhow = false">X</span></p>
 			<div class="flex_center">
 				<p>二级密码：</p>				
 				<input type="password" id="" placeholder="请输入二级密码" v-model="password" />
@@ -10,7 +10,7 @@
 			<div class="flex_center">
 				<p class="pop_p2" v-if="password" @click="subint">确认</p>
 				<p class="pop_p2 opt4" v-else>确认</p>
-				<p class="pop_p3" @click="close">取消</p>				
+				<p class="pop_p3" @click="passhow = false">取消</p>				
 			</div>
 		</van-popup>
 	</div>
@@ -26,14 +26,35 @@
 				//source: null,					//数据页面来源    0预约买入  1预约卖出
 				//autoType: ''.					//预约买入选取
 				//saleType: '',				    //预约卖出数据来源
-				//passhow: true,
+				passhow: false,
 				closepop: false,
 				password: '',
 				show: false,
 			}
 		},
-		props: ['passhow', 'source','autoType', 'saleType'],
+		props: ['source','autoType', 'saleType'],
 		methods: {
+			//判断二级密码
+		    check () {
+	          	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/appUser/checkPasswordSet',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		userId: localStorage.getItem('userId')
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.status = 0
+			        	that.passhow = true
+			        } else if (res.data.code == -1) {
+			        	Toast('请先设置二级密码')
+			        	that.status = -1
+			        	that.passhow = false
+			          	that.$router.push({path:'/secondnav'})
+			        }
+		      	})
+		    },
 		    subint () {
 	          	let that = this
 	          	var url = ''
@@ -61,6 +82,7 @@
 			        if (res.data.code == 0) {
 			        	Toast(res.data.msg)
 			        	that.close()
+			        	that.passhow = false
 			        } else {
 			          	Toast(res.data.msg)
 			        }
@@ -68,8 +90,9 @@
 		    },
 		    //关闭
 		    close () {
-		    	this.$emit('change',this.show)
-//		    	this.passhow = false
+		    	let that = this
+		    	that.passhow = false
+		    	this.$emit('change')
 		    }
 		}
 	})
