@@ -24,30 +24,42 @@
 		  	</van-cell-group>
 		</van-radio-group>
 		<div class="peo_bom">
-			<div class="sub" @click="subuy">
+			<div class="sub" v-if="radio" @click="subuy">
+				保存
+			</div>
+			<div class="sub opt4" v-else>
 				保存
 			</div>
 		</div>
+		<pass :source='source' :autoType='radio' :passhow='passhow' @change='get'></pass>
 	</div>
 </template>
 
 <script>
 	import { Toast } from 'vant'
 	import qs from 'qs'
+	import pass from '@/components/intpassword.vue'
 	export default({
 		name: 'orbuying',
 		data () {
 			return {
-				radio: '',				//选择类型
+				radio: '8',				//选择类型
+				status: null,			//是否设置二级密码   0设置   -1未设置
+				source: 0,
+				passhow: false
 			}
 		},
 		created () {
-			
-		},
+			this.getbuy()
+		},		
 		methods: {
 			//返回
 		    onClickLeft () {
 		        history.go(-1)
+		    },
+		    //关闭
+		    get () {
+		    	this.passhow = false
 		    },
 		    //获取状态
 		    getbuy () {
@@ -60,36 +72,42 @@
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {
-			        	that.radio = res.data.data.autoType
+			        	that.radio = res.data.data.toString()
 			        } else {
 			          	Toast(res.data.msg)
 			        }
 		      	})
 		    },
-		    //预约买入选取
+		    //判断二级密码
 		    subuy () {
 	          	let that = this
 		        that.$axios({
-		      	  	url: '/api/app/automaticOrder/setAutoBuy',
+		      	  	url: '/api/app/appUser/checkPasswordSet',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		userId: localStorage.getItem('userId'),
-		          		autoType: that.radio,
-		          		passWord: 22
+		          		userId: localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {
-			        	
-			        } else {
-			          	Toast(res.data.msg)
+			        	that.status = 0
+			        	that.passhow = true
+			        } else if (res.data.code == -1) {
+			        	Toast('请先设置二级密码')
+			        	that.status = -1
+			        	that.passhow = false
+			          	that.$router.push({path:'/secondnav'})
 			        }
 		      	})
-		    },
+		    }		    
+		},
+		components: {
+			pass
 		}
 	})
 </script>
 
 <style scoped>
+.opt4{opacity: .4;}
 /*保存*/
 .peo_bom{background: #FFFFFF;position: absolute;bottom: 0;padding: .26rem .5rem;width: 100%;}
 .sub{width: 100%;height: .88rem;line-height: .88rem; background-image: linear-gradient(-90deg, #FF9400 0%, #FF6808 100%);border-radius: 44px;text-align: center;color: #fff;font-size: .32rem;}

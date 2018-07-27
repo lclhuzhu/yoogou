@@ -32,7 +32,7 @@
 		methods: {
 			//返回
 		    onClickLeft () {
-		      history.go(-1)
+		        this.$router.push({path:'/mine'})
 		    },
 		    //获取状态
 		    getcheck () {
