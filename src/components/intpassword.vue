@@ -23,7 +23,7 @@
 		name: 'intpassword',
 		data () {
 			return {
-				//source: null,					//数据页面来源    0预约买入  1预约卖出
+				//source: null,					//数据页面来源    0预约买入  1预约卖出  2卖出订单
 				//autoType: ''.					//预约买入选取
 				//saleType: '',				    //预约卖出数据来源
 				passhow: false,
@@ -32,7 +32,7 @@
 				show: false,
 			}
 		},
-		props: ['source','autoType', 'saleType'],
+		props: ['source','autoType', 'saleType', 'userOrdersId'],
 		methods: {
 			//判断二级密码
 		    check () {
@@ -59,20 +59,33 @@
 	          	let that = this
 	          	var url = ''
 	          	var data = ''
-	          	if (this.source == 0) {
-	          		var url = '/api/app/automaticOrder/setAutoBuy'
-	          		var data = {
-	          			userId: localStorage.getItem('userId'),
-		          		autoType: that.autoType,
-		          		passWord: that.password
-	          		}
-	          	} else if (this.source == 1) {
-	          		var url = '/api/app/automaticOrder/setAutoSale'
-	          		var data = {
-	          			userId: localStorage.getItem('userId'),
-		          		autoType: that.saleType,
-		          		passWord: that.password
-	          		}
+	          	switch (that.source){
+	          		case 0:
+	          			url = '/api/app/automaticOrder/setAutoBuy'
+	          			data = {
+		          			userId: localStorage.getItem('userId'),
+			          		autoType: that.autoType,
+			          		passWord: that.password
+		          		}
+	          			break;
+          			case 1:
+	          			url = '/api/app/automaticOrder/setAutoSale'
+	          			data = {
+		          			userId: localStorage.getItem('userId'),
+			          		autoType: that.autoType,
+			          		passWord: that.password
+		          		}
+          				break;
+          			case 2:
+	          			url = '/api/app/presale/saleItem'
+	          			data = {
+		          			userId: localStorage.getItem('userId'),
+			          		passWord: that.password,
+			          		userOrdersId: that.userOrdersId,
+		          		}
+	          			break;
+	          		default:
+	          			break;
 	          	}
 		        that.$axios({
 		      	  	url: url,
