@@ -33,7 +33,7 @@
 		name: 'intpassword',
 		data () {
 			return {
-				//source: null,					//数据页面来源    0预约买入  1预约卖出  2卖出订单 3直推收益卖出
+				//source: null,					//数据页面来源    0预约买入  1预约卖出  2卖出订单 3直推收益卖出 4卖出订单收款详情
 				//autoType: ''.					//预约买入选取
 				//saleType: '',				    //预约卖出数据来源
 				passhow: false,
@@ -43,7 +43,7 @@
 				show: false,					//直推收益弹窗
 			}
 		},
-		props: ['source','autoType', 'saleType', 'userOrdersId', 'money'],
+		props: ['source','autoType', 'saleType', 'userOrdersId', 'money', 'orderId', 'type'],
 		methods: {
 			//判断二级密码
 		    check () {
@@ -103,12 +103,20 @@
 			          		money: that.money,
 		          		}
 	          			break;
-                default:
-                  this.$emit('inputEnd',{
-                      passWord: that.password,
-                  })
-                  this.close();
+          			case 4:
+	          			url = '/api/app/presaleOrder/updateMatchingOrderInfo'
+	          			data = {
+		          			orderId: that.orderId,
+			          		passWord: that.password,
+			          		type: that.type,
+		          		}
 	          			break;
+                	default:
+              		this.$emit('inputEnd',{
+                      	passWord: that.password,
+                  	})
+                  	this.close();
+          				break;
 	          	}
 		        that.$axios({
 		      	  	url: url,

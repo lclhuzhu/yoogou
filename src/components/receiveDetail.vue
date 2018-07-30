@@ -1,67 +1,130 @@
 <template>
     <div class="receiveDetail">
-      <van-nav-bar title="收款详情" left-text="返回" left-arrow @click-left="onClickLeft"/>
-      <div class="details">
-        <ul class="dingdan">
-          <li class="state">b2018070100001-001</li>
-          <li class="money dingdan-right-li">¥3000</li>
-        </ul>
-
-        <ul class="middle">
-          <li class="state">付款钱包地址</li>
-          <li class="money dingdan-right-li">DGDSGFHFDfgfsfsd</li>
-        </ul>
-
-        <ul class="ul-img">
-          <li><img class="div-img" src="" /></li>
-          <li><img class="div-img" src="" /></li>
-          <li><img class="div-img" src="" /></li>
-        </ul>
-    </div>
-
-      <div class="bottom">
-        <ul class="button-ul">
-          <li class="left-li" @click="isShow=true">确认未收到足够款项</li>
-          <li class="right-li">确认已收款</li>
-        </ul>
-      </div>
-
-      <!--弹框-->
-      <van-popup v-model="isShow" :close-on-click-overlay = "true">
-        <div class="pop-bottm">
-          <span class="title">提示</span>
-          <div class="line"></div>
-          <p class="pop-p1">确认后将无法撤销，请确实该笔</p>
-          <p class="pop-p2">交易未收到足额款项！</p>
-          <ul>
-            <router-link to="/IntegralDealList">
-              <li class="will-pay">确认</li>
-            </router-link>
-
-            <router-link to="">
-              <li class="delay">取消</li>
-            </router-link>
-
-          </ul>
-
-        </div>
-      </van-popup>
+     	 <van-nav-bar title="收款详情" left-text="返回" left-arrow @click-left="onClickLeft"/>
+      	<div class="details">
+   		 	<ul class="dingdan">
+         		 <li class="state">{{ subOrderNo }}</li>
+          		<li class="money dingdan-right-li">¥{{ price }}</li>
+        	</ul>
+        	<ul class="middle">
+			 	<li class="state">付款钱包地址</li>
+		        <li class="money dingdan-right-li">{{ walletAddress }}</li>
+        	</ul>
+	        <ul class="ul-img" v-if="img.length != 0">
+	          	<li v-for="(item, index) in img" :key='index'><img class="div-img" :src="item" /></li>
+	        </ul>
+    	</div>
+      	<div class="bottom">
+        	<ul class="button-ul">
+          		<li class="left-li" @click="subnone">确认未收到足够款项</li>
+          		<li class="right-li" @click="subhave">确认已收款</li>
+        	</ul>
+      	</div>
+      	<!--已收款弹框-->
+        <van-popup v-model="isShow" :close-on-click-overlay = "true">
+	        <div class="pop-bottm">
+	            <span class="title">提示</span>
+	            <div class="line"></div>
+	            <p class="pop-p1">确认后将无法撤销，请确实该笔</p>
+	            <p class="pop-p2">交易已收款！</p>
+	            <ul>
+	                <li class="delay" @click="sunSale">确认</li>
+	                <li class="will-pay" @click="isShow = false">取消</li>
+	            </ul>
+	        </div>
+        </van-popup>
+        <!--未收款弹框-->
+        <van-popup v-model="isShowb" :close-on-click-overlay = "true">
+	        <div class="pop-bottm">
+	            <span class="title">提示</span>
+	            <div class="line"></div>
+	            <p class="pop-p1">确认后将无法撤销，请确实该笔</p>
+	            <p class="pop-p2">交易未收到足额款项！</p>
+	            <ul>
+	                <li class="delay" @click="sunSale">确认</li>
+	                <li class="will-pay" @click="isShowb = false">取消</li>
+	            </ul>
+	        </div>
+        </van-popup>
+        <pass :source='source' :orderId='orderId' :type='type' ref="c1" @change='change'></pass>
     </div>
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
+	import pass from '@/components/intpassword.vue'
     export default {
-        name: "receiveDetail",
-      data() {
-          return {
-            isShow: false,
-          }
-      },
-      methods: {
-        onClickLeft () {
-          history.go(-1);
-        }
-      }
+	    name: "receiveDetail",
+	  	data() {
+	      	return {
+	        	isShow: false,
+	        	isShowb: false,
+	        	subOrderNo: 0,
+	        	price: 0,
+	        	walletAddress: 0,
+	        	img:[],
+	        	source: 4,
+	        	orderId: 0,
+	        	type: 0 || 1,				//0支付不成功   1成功
+	    	}
+		},
+		created () {
+			this.orderId = this.$route.query.orderId
+			this.getdeatil()
+		},
+	    methods: {
+	        onClickLeft () {
+	          	history.go(-1);
+	        },
+	        //获取列表
+		    getdeatil () {
+		    	let that = this
+		        that.$axios({
+		      	  	url: '/api/app/presaleOrder/getMatchingOrderInfo',
+		       		method: 'POST',
+		        	data: qs.stringify({
+		          		orderId: that.$route.query.orderId
+		        	})
+		      	}).then(res => {
+			        if (res.data.code == 0) {
+			        	that.subOrderNo = res.data.data.subOrderNo
+			        	that.price = res.data.data.price
+			        	that.walletAddress = res.data.data.walletAddress
+			        	that.img = res.data.data.img
+			        } else {
+			        	Toast(res.data.msg)
+			        }
+		      	})
+		    },
+		    //未收款
+		    subnone () {
+		    	let that = this
+		    	that.isShowb = true
+		    	that.type = 0		    	
+		    },
+		    //已收款
+		    subhave () {
+		    	let that = this
+		    	that.isShow = true
+		    	that.type = 1
+		    },
+		    //调用二级密码组件方法
+		    sunSale () {
+		    	let that = this
+		    	that.isShowb = false
+		    	that.isShow = false
+		    	//调用二级密码组件方法
+        		that.$refs.c1.check()
+		    },
+		    //跳转积分记录
+		    change () {
+		    	this.$router.push({path:'/IntegralDealList'})
+		    }
+	    },
+	    components : {
+	    	pass
+	    }
     }
 </script>
 

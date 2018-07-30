@@ -88,7 +88,7 @@
 		      	  	url: '/api/app/presale/getSaleItems',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		userId: 1//localStorage.getItem('userId')
+		          		userId: localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {

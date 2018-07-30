@@ -42,7 +42,7 @@
 			</router-link>
         </div>
       <div class="integral-maichu-list" v-if="checkIndex == 1">
-			<router-link to="/saleOrderDetails">
+			<router-link :to="{path:'/saleOrderDetails',query:{'orderId':item.id,'No':item.presaleOrderNo}}">
 				<div class="list-single">
 					<div class="date">
 						{{item.saleTime}}

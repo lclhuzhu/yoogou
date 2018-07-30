@@ -5,11 +5,11 @@
 	      	<div class="details">
 		        <ul class="dingdan">
 		          	<li class="state">订单号</li>
-		          	<li class="money dingdan-right-li">111111</li>
+		          	<li class="money dingdan-right-li">{{ No }}</li>
 		        </ul>
 		        <ul class="middle">
 			        <li class="state">卖出积分商品价值合计</li>
-			        <li class="money dingdan-right-li">3842378432</li>
+			        <li class="money dingdan-right-li">￥ {{ salePrice }}</li>
 		        </ul>
 	          	<div class="content" v-for="item in list" :key='item.id' @click="Detail(item.status,item.id)">
 	            	<ul class="price">
@@ -41,10 +41,13 @@
 		name: 'buyOrderDetails',
 		data () {
 			return {
+				salePrice: '',					//总价
+				No:'',							//订单号
 				list: [],						//订单列表
 			}
 		},
 		created () {
+			this.No = this.$route.query.No
 			this.getorder()
 		},
 		methods: {
@@ -59,9 +62,10 @@
 		      	  	url: '/api/app/presaleOrder/getMatchingOrder',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		orderId: 96//localStorage.getItem('userId')
+		          		orderId: that.$route.query.orderId
 		        	})
 		      	}).then(res => {
+		      		that.salePrice = res.data.data[0].salePrice
 			        if (res.data.code == 0) {
 			        	that.list = res.data.data
 			        } else {
