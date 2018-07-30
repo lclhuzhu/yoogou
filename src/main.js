@@ -13,12 +13,14 @@ Vue.prototype.$axios = axios
 
 // http request 请求拦截器，有token值则配置上token值
 axios.interceptors.request.use(
-		config => {
-        if (localStorage.getItem('userId')) {  // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
-            config.headers.Authorization = localStorage.getItem('userId')
-        }else{
-        	router.replace({ path: 'login' })
-        }
+	config => {
+//      if (localStorage.getItem('userId')) {  // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
+//          config.headers.Authorization = localStorage.getItem('userId')
+//      }else{
+//      	router.replace({ path: 'login' })
+//      }
+        config.headers.userPhone = localStorage.getItem('myPhone')
+        config.headers.clientId = localStorage.getItem('myId')
         return config
     },
     err => {

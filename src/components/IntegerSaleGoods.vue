@@ -4,7 +4,7 @@
 		<van-radio-group v-model="radio">
 		  	<van-radio :name="item.id" v-for='item in list' :key='item.id' v-if='item.status == 1'>
 		  		<div class="radio_d1 flex_between_v">
-		  			<p>b2018071500001</p>
+		  			<p>{{ item.prebuyOrderId }}</p>
 		  			<p class="col19b">可卖出</p>
 		  		</div>
 		  		<div class="radio_d2">
@@ -25,10 +25,10 @@
 		</van-radio-group>
 		<div class="list_box" v-for='item in list' :key='item.id' v-if='item.status != 1'>
 			<div class="radio_d1 flex_between_v">
-		  			<p>b2018071500001</p>
-		  			<p class="colff6" v-if='item.status == 0'>交易中</p>
-		  			<p class="colffb" v-if='item.status == 2'>交易中</p>
-		  			<p class="colff6" v-if='item.status == 3'>冻结中</p>
+		  			<p>{{ item.prebuyOrderId }}</p>
+		  			<p class="colff6" v-if='item.status == 0'>冻结中</p>
+		  			<p class="colffb" v-if='item.status == 2'>卖出中</p>
+		  			<p class="colff6" v-if='item.status == 3'>已卖出</p>
 		  		</div>
 		  		<div class="radio_d2">
 		  			<div class="flex_between_v">
@@ -44,6 +44,9 @@
 			  			<p class="col222">{{ item.interestBeginTime }}</p>
 			  		</div>
 		  		</div>
+		</div>
+		<div class="" v-if="list.length == 0" style="text-align: center; margin-top:1rem;">
+			暂无数据
 		</div>
 		<div class="peo_bom" v-if='radio'>
 			<div class="sub" @click="sub">
@@ -85,7 +88,7 @@
 		      	  	url: '/api/app/presale/getSaleItems',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		userId: 6
+		          		userId: 1//localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {

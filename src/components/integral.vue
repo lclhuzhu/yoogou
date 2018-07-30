@@ -23,7 +23,7 @@
 					</div>
 				</li>
 			</router-link>
-			<li>
+			<li @click="linkmyIntegral">
 				<div class="integral-maichu">
 					<ul>
 						<li>
@@ -57,7 +57,12 @@
 
 <script>
 	export default({
-		name: 'integral'
+		name: 'integral',
+		methods: {
+			linkmyIntegral () {
+				this.$router.push({path:'/integerSaleMain'})			
+			}
+		}
 	})
 </script>
 
