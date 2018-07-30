@@ -6,6 +6,7 @@ import router from './router'
 import Vant from 'vant'
 import 'vant/lib/vant-css/index.css'
 import axios from 'axios'
+import store from './store'
 
 Vue.config.productionTip = false
 Vue.use(Vant)
@@ -14,6 +15,10 @@ Vue.prototype.$axios = axios
 // http request 请求拦截器，有token值则配置上token值
 axios.interceptors.request.use(
 		config => {
+        config.headers = {
+          ...config.headers,
+          ...store.state.Exchange.headers
+        }
         if (localStorage.getItem('userId')) {  // 每次发送请求之前判断是否存在token，如果存在，则统一在http请求的header都加上token，不用每次请求都手动添加了
             config.headers.Authorization = localStorage.getItem('userId')
         }else{
@@ -41,6 +46,7 @@ if (303 == error.response.status) {
 new Vue({
   el: '#app',
   router,
+  store,
   components: { App },
   template: '<App/>'
 })

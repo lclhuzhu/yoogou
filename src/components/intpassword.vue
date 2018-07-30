@@ -4,13 +4,13 @@
 		<van-popup v-model="passhow" :close-on-click-overlay='closepop'>
 			<p class="pop_til"><span>提示</span><span class="close" @click="passhow = false">X</span></p>
 			<div class="flex_center">
-				<p>二级密码：</p>				
+				<p>二级密码：</p>
 				<input type="password" id="" placeholder="请输入二级密码" v-model="password" />
 			</div>
 			<div class="flex_center">
 				<p class="pop_p2" v-if="password" @click="subint">确认</p>
 				<p class="pop_p2 opt4" v-else>确认</p>
-				<p class="pop_p3" @click="passhow = false">取消</p>				
+				<p class="pop_p3" @click="passhow = false">取消</p>
 			</div>
 		</van-popup>
 	</div>
@@ -84,8 +84,12 @@
 			          		userOrdersId: that.userOrdersId,
 		          		}
 	          			break;
-	          		default:
-	          			break;
+                default:
+                  this.$emit('inputEnd',{
+                      passWord: that.password,
+                  })
+                  this.close();
+	          			return;
 	          	}
 		        that.$axios({
 		      	  	url: url,
