@@ -101,7 +101,7 @@
 		    },
 		    //进入积分
 		    tolink () {
-		    	this.$router.push({path:'/integral'})
+		    	this.$router.push({path:'/trusteeship'})
 		    }
 		}
 	})

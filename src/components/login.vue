@@ -94,6 +94,8 @@
 			        if (res.data.code == 0) {
 			        	Toast(res.data.msg)
 			        	localStorage.setItem('userId',res.data.data.userId)
+			        	localStorage.setItem('myId',res.data.data.userId)
+			        	localStorage.setItem('myPhone',that.phone)
 			        	localStorage.setItem('isTrust',res.data.data.isTrust)
 			        	that.$router.push({path:'/home'})
 			        } else {

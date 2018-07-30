@@ -66,4 +66,11 @@ a{text-decoration: none;color: #4A4A4A;}
 .saleorder .van-radio{background: #fff;margin-top: .2rem;padding: 0 .3rem;position: relative;color: #999999;font-size: .24rem;}
 .saleorder .van-radio__label{width: 100%;margin-left: 0;line-height: normal;}
 .saleorder .van-radio__input{position: absolute;top: .15rem;left: .3rem;}
+/*选择器*/
+.van-picker-column li{padding: 0 .1rem !important;}
+.van-picker-column{font-size: .4rem !important;}
+.van-picker__toolbar{height: .8rem !important;line-height: .8rem !important;}
+.van-hairline--top-bottom::after{border-width:.02rem 0 !important;}
+.van-picker__cancel, .van-picker__confirm{padding: 0 .3rem !important;color: #000 !important;}
+.van-toast--text{min-width: 4.4rem !important;font-size: .28rem !important;padding: .24rem !important;}
 </style>

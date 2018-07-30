@@ -39,6 +39,7 @@ import Forgetpas from '@/components/forgetpas'
 import Customer from '@/components/customer'
 import Membereg from '@/components/membereg'
 import ReceiveDetail from '@/components/receiveDetail'
+import Trusteeship from '@/components/trusteeship'
 
 Vue.use(Router)
 
@@ -72,6 +73,7 @@ const router = new Router({
  		{path: '/forgetpas',name: 'forgetpas',component: Forgetpas,meta: {title: '找回二级密码'}},
  		{path: '/customer',name: 'customer',component: Customer,meta: {title: '客服列表'}},
  		{path: '/membereg',name: 'membereg',component: Membereg,meta: {title: '会员注册'}},
+ 		{path: '/trusteeship',name: 'trusteeship',component: Trusteeship,meta: {title: '积分'}},
  		{path: '/myIntegral',name: 'myIntegral',component: MyIntegral,meta: {title: '积分'}},
     {path: '/buyOrderDetails',name: 'buyOrderDetails',component: BuyOrderDetails,meta: {title: '买入订单'}},
     {path: '/saleOrderDetails',name: 'saleOrderDetails',component: SaleOrderDetails,meta: {title: '卖出订单'}},
