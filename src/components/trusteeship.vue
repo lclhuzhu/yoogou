@@ -166,7 +166,7 @@
 	/*============积分购买===================*/
 	#trusteeship{overflow: hidden;}
 	.top_flex{padding: .32rem .3rem; background: #fff;border-bottom: 1px solid #E5E5E5;}
-	.top_p{margin: 0 .1rem;}
+	.top_p{margin: 0 .1rem;font-size: .24rem;}
 	.trusteeship{
 		height: 3.2rem;
 		width: 100%;
