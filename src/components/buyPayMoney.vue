@@ -75,7 +75,7 @@ export default {
       const resp = await Promise.all(imageTasks)
       const images = resp.map(d => {
         if (d.data && d.data.code === 0) {
-          return d.data.data.path
+          return d.data.data
         }
         return null
       })
