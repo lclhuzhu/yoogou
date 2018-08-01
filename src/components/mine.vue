@@ -1,6 +1,6 @@
 <template>
 	<div class="mine">
-		<van-nav-bar class='til' title="互助商城"/>
+		<van-nav-bar class='til' title="海汇"/>
 		<div class="min_top flex_start">
 			<div class="flex_start_v top_tel">
 				<img class="tx_img" src="@/assets/tx@2x.png"/>

@@ -2,7 +2,7 @@
 	<div class="login">
 		<img class="logo_img" src="@/assets/logo@2x.png"/>
 		<div class="lo_til">
-			互助商城
+			海汇
 		</div>
 		<div class="com">
 			<div class="int_fle">

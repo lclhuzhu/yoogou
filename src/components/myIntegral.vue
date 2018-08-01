@@ -1,6 +1,6 @@
 <template>
 	<div class="myIntegral">
-		<van-nav-bar title="积分" left-text="返回" left-arrow @click-left="onClickLeft"/>
+		<van-nav-bar title="账户托管" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<div class="flex_between_v bor1" v-if='isTrust == 0' @click="trust">
 			<p>托管本账号</p>
 			<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>

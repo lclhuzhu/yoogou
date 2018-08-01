@@ -99,7 +99,7 @@
 	          			url = '/api/app/presale/saleScheduleProfit'
 	          			data = {
 		          			userId: localStorage.getItem('userId'),
-			          		passWord: that.password,
+			          		payPassword: that.password,
 			          		money: that.money,
 		          		}
 	          			break;

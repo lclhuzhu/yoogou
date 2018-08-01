@@ -1,12 +1,12 @@
 <template>
 	<div class="home">
-		<van-nav-bar class='til' title="互助商城"/>
+		<van-nav-bar class='til' title="海汇"/>
 		<div class="heard">
 			<van-swipe :autoplay="3000">
-			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
-			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
-			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
-			  <van-swipe-item><img src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img class="swip_img" src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img class="swip_img" src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img class="swip_img" src="@/assets/banner@2x.png"/></van-swipe-item>
+			  <van-swipe-item><img class="swip_img" src="@/assets/banner@2x.png"/></van-swipe-item>
 			</van-swipe>
 		</div>
 		<div class="menu">
@@ -330,5 +330,9 @@
 		display: block;
 		float: left;
 		box-sizing: border-box;
+	}
+	.swip_img{
+		width: 100%;
+		height: 100%;
 	}
 </style>

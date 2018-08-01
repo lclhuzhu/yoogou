@@ -136,7 +136,7 @@
 		    },
 		    //跳转买入商品
 		    shipTrans () {
-		    	if (!this.phoneSet) {
+		    	if (this.phoneSet) {
 					this.$router.push({path:'/integralTrans'})					
 				} else {
 					Toast('请选择账户')
@@ -144,7 +144,7 @@
 		    },
 			//跳转卖出产品
 			linkmytrusteeship () {
-				if (!this.phoneSet) {
+				if (this.phoneSet) {
 					this.$router.push({path:'/integerSaleMain'})					
 				} else {
 					Toast('请选择账户')
@@ -152,7 +152,7 @@
 			},
 			//跳转积分交易情况
 			DealList () {
-				if (!this.phoneSet) {
+				if (this.phoneSet) {
 					this.$router.push({path:'/IntegralDealList'})					
 				} else {
 					Toast('请选择账户')

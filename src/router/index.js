@@ -48,12 +48,12 @@ const router = new Router({
   routes: [
     {path: '/',name: 'regist',component: Regist,meta: {title: '注册'}},
     {path: '/login',name: 'login',component: Login,meta: {title: '登录'}},
-    {path: '/none',name: 'none',component: None,meta: {title: '互助商城'}},
-    {path: '/index',name: 'index',component: Index,meta: {title: '互助商城'}, children:[
-    	{path: '/home',name: 'home',component: Home, meta: {title: '互助商城'}},
-    	{path: '/integral',name: 'integral',component: Integral, meta: {title: '互助商城'}},
-    	{path: '/shopcar',name: 'shopcar',component: Shopcar, meta: {title: '互助商城'}},
-    	{path: '/mine',name: 'mine',component: Mine, meta: {title: '互助商城'}}
+    {path: '/none',name: 'none',component: None,meta: {title: '海汇'}},
+    {path: '/index',name: 'index',component: Index,meta: {title: '海汇'}, children:[
+    	{path: '/home',name: 'home',component: Home, meta: {title: '海汇'}},
+    	{path: '/integral',name: 'integral',component: Integral, meta: {title: '海汇'}},
+    	{path: '/shopcar',name: 'shopcar',component: Shopcar, meta: {title: '海汇'}},
+    	{path: '/mine',name: 'mine',component: Mine, meta: {title: '海汇'}}
     ]},
     {path: '/IntegralDealList',name: 'IntegralDealList',component: IntegralDealList,meta: {title: '积分交易情况'}},
     {path: '/myteam',name: 'myteam',component: Myteam,meta: {title: '我的团队'}},
