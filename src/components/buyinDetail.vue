@@ -89,10 +89,9 @@
 			    var a = time_end + santian //三天后
 //			    var time_distance = a- time_start; //剩余时间
 				var time_distance = 5212951
-//			    setInterval(()=>{
-//			    	console.log(time_distance)
-//					time_distance --
-//			    },1000)
+			    setInterval(()=>{
+					time_distance = time_distance --
+			    },1000)
 			    // 天
 			    var int_day = Math.floor(time_distance/86400000) 
 			    time_distance -= int_day * 86400000; 
