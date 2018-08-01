@@ -33,7 +33,7 @@
 		name: 'intpassword',
 		data () {
 			return {
-				//source: null,					//数据页面来源    0预约买入  1预约卖出  2卖出订单 3直推收益卖出 4卖出订单收款详情
+				//source: null,					//数据页面来源    0预约买入  1预约卖出  2卖出订单 3直推收益卖出 4卖出订单收款详情5商品购买来源
 				//autoType: ''.					//预约买入选取
 				//saleType: '',				    //预约卖出数据来源
 				passhow: false,
@@ -43,7 +43,7 @@
 				show: false,					//直推收益弹窗
 			}
 		},
-		props: ['source','autoType', 'saleType', 'userOrdersId', 'money', 'orderId', 'type'],
+		props: ['source','autoType', 'saleType', 'userOrdersId', 'money', 'orderId', 'type', 'itemid'],
 		methods: {
 			//判断二级密码
 		    check () {
@@ -111,9 +111,17 @@
 			          		type: that.type,
 		          		}
 	          			break;
+          			case 5:
+	          			url = '/api/app/buyItem/buyItem'
+	          			data = {
+		          			itemId:that.itemid,
+							userId: localStorage.getItem('userId'),
+			          		payPassword: that.password
+			          	}
+          				break;
                 	default:
               		this.$emit('inputEnd',{
-                      	passWord: that.password,
+                      	password: that.password,
                   	})
                   	this.close();
           				break;

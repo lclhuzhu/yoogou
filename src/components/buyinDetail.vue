@@ -9,60 +9,106 @@
   </van-swipe>
   <van-cell-group>
     <van-cell>
-      <div class="goods-price">￥{{ price }}</div>
-      <div class="goods-title">{{ title }}</div>
+      <div class="goods-price">￥{{ data.price }}</div>
+      <div class="goods-title">{{ data.name }}</div>
     </van-cell>
     <van-cell class="goods-express">
      	产品说明：<br />
-     	投资2000，单日利率1%，单个交易周期收益最高15%
+     	{{ data.remark }}
     </van-cell>
     <div class="goods-remind">
-      {{remind}}
+      {{data.updateTime}}
     </div>
   </van-cell-group>
   <!--弹出框-->
   <van-popup v-model="isShow">
-	<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
+	<p class="pop_til"><span>提示</span><span class="close" @click="isShow = false">X</span></p>
 	<p class="pop_p1"><span>购买后即将发起排单...</span><br/>您的排单将在下一个交易日根据<br/>先后顺序进入排单交易池!</p>
-	<router-link to="/IntegralDealList">
-      <div class="pop_p2">
-        OK
-      </div>
-    </router-link>
+      <div class="pop_p2" @click="ok">OK</div>
   </van-popup>
   <div class="peo_bom">
-	<div class="sub">
+	<div class="sub" @click="onClickBuy">
 	  确认买入
 	</div>
   </div>
+  <pass :source='source' :itemid='itemid' ref="c1" @change='isShow = true'></pass>
 </div>
 </template>
 
 <script>
+	import { Toast } from 'vant'
+	import qs from 'qs'
+	import pass from '@/components/intpassword.vue'
+	
     export default {
         name: "buyinDetail",
       	data () {
           return {
-          	isShow: true,
-            title: '新品和田蓝玉香炉玉石毛料冰种原料牌子\n阳绿色A货',
-            price: 10000,
-            express: '产品说明：\n投资2000，单日利率1%，单个交易周期收益最高15%',
-            remind: '*2天20小时18分后可以发起买入',
+          	data:'',
+          	itemid:null,
+          	isShow: false,
+          	status: null,			//是否设置二级密码   0设置   -1未设置
+			source: 5,
+			passhow: false,
             imgs: [
               'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
               'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
             ]
           }
-	      },
-		    methods: {
-		    	onClickLeft() {
-		      	history.go(-1)
-		    	},
-		      onClickBuy () {
-		        alert("点击了确认购买");
-		      }
-		    }
-	    }
+	    },
+	    created() {
+	    	this.itemid = this.$route.query.id;
+			this.details()
+			this.buy()
+		},
+	    methods: {
+	    	details(){
+	    		let that = this
+				that.$axios({
+					method: 'POST',
+					url: '/api/app/item/getItemById',
+					data: qs.stringify({
+						itemId:that.itemid
+					}),
+				}).then(function(res) {
+					that.data = res.data.data[0];
+				})
+	    	},
+//	    	倒计时
+//	    	setInterval(function () {
+//			    var nowtime = new Date();
+//			    var time = starttime - nowtime;
+//			    var day = parseInt(time / 1000 / 60 / 60 / 24);
+//			    var hour = parseInt(time / 1000 / 60 / 60 % 24);
+//			    var minute = parseInt(time / 1000 / 60 % 60);
+//			    var seconds = parseInt(time / 1000 % 60);
+//			    $('.timespan').html(day + "天" + hour + "小时" + minute + "分钟" + seconds + "秒");
+//			  }, 1000),
+			  
+	    	onClickLeft() {
+	      		history.go(-1)
+	    	},
+//	    	弹框确定买入
+	      	onClickBuy () {
+	      		let that = this
+	      		this.$refs.c1.check()
+	      	},
+	      	
+//	      	确定
+	      	ok () {
+	      		let that = this
+				that.isShow = false
+	      	},
+	      	//关闭二级密码
+		    get () {
+		    	this.passhow = false
+		    },
+			
+	    },
+	    components: {
+			pass
+		}
+	}
 </script>
 
 <style scoped>

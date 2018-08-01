@@ -2,14 +2,14 @@
 	<div class="integralTrans">
 		<van-nav-bar title="买入" left-text="返回" left-arrow @click-left="onClickLeft" />
 		<!--  -->
-		<div @click="link(item.id)" class='top_div flex_between_v' :class="item == 2 ? 'clo999':''" v-for="item in items" :key="item.id" v-if="items.reserveOne == 'true' && items.validity == 'true'">
+		<div @click="link(item.id)" class='top_div flex_between_v' :class="item == 2 ? 'clo999':''" v-for="item in items" :key="item.id" v-if="item.reserveOne && item.validity">
 			<div class="">
 				<p class="top_p1">{{item.name}}</p>
 				<p class="top_p2">{{item.updateTime}}</p>
 			</div>
 			<p class="top_p3">{{item.price}}</p>
-		</div>
-		<div class='top_div flex_between_v' :class="item == 2 ? 'clo999':''" v-for="item in items">
+		</div>		
+		<div  @click="no()" class='top_div flex_between_v' :class="item == 2 ? 'clo999':''" v-for="item in items" v-if="!item.reserveOne || !item.validity">
 			<div class="">
 				<p class="">{{item.name}}</p>
 				<p class="">{{item.updateTime}}</p>
@@ -66,6 +66,9 @@
 			link(a) {
 				let that = this
 				that.$router.push({path:'/buyinDetail',query:{id:a}});
+			},
+			no(){
+				this.show = true
 			}
 		}
 	}
