@@ -86,7 +86,6 @@ export default {
       this.photoList.splice(idx,1);
     },
     afterFileAdd(file) {
-      console.log(file)
       this.photoList.push(file)
       if (this.photoList.length > 1) {
         const fileToUpload = this.photoList[this.photoList.length - 2]
