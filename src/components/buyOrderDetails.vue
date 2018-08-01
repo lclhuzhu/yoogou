@@ -64,6 +64,7 @@
 
 <script>
 import { Toast } from 'vant'
+import qs from 'qs'
 export default {
   name: 'buyOrderDetails',
   data() {
@@ -129,7 +130,7 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/getPrebuyOrder',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           orderId: id
         })
       }).then(res => {
@@ -145,7 +146,7 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/getPrebuyOrderOperation',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           orderId: id
         })
       }).then(res => {

@@ -72,7 +72,7 @@
 
 <script>
 import { Toast } from 'vant'
-
+import qs from 'qs'
 export default {
   name: 'IntegralDealList',
   data() {
@@ -154,8 +154,8 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/getIsCollisionOrder',
         method: 'POST',
-        data: JSON.stringify({
-          userId: this.$store.state.Exchange.userId
+        data: qs.stringify({
+          userId: localStorage.getItem('userId')
         })
       }).then(res => {
         if (res.data.code == 0) {
@@ -170,9 +170,9 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/setIsCollisionOrder',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           flag: '0',
-          userId: this.$store.state.Exchange.userId
+          userId: localStorage.getItem('userId')
         })
       }).then(res => {
         if (res.data.code == 0) {
@@ -187,7 +187,7 @@ export default {
       this.$axios({
         url: '/api/app/buyItem/quickBuyItem',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           orderId: item.id
         })
       }).then(res => {
@@ -202,8 +202,8 @@ export default {
         this.$axios({
           url: '/api/app/prebuyOrder/getPrebuyOrderInfo',
           method: 'POST',
-          data: JSON.stringify({
-            userId: this.$store.state.Exchange.userId
+          data: qs.stringify({
+            userId: localStorage.getItem('userId')
           })
         }).then(res => {
           this.loading = false
@@ -224,8 +224,8 @@ export default {
         this.$axios({
           url: '/api/app/presaleOrder/getPresaleOrderAll',
           method: 'POST',
-          data: JSON.stringify({
-            userId: this.$store.state.Exchange.userId
+          data: qs.stringify({
+            userId: localStorage.getItem('userId')
           })
         }).then(res => {
           this.loading = false
