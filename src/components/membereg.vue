@@ -50,17 +50,17 @@
 		    getCode () {
 		        let that = this
 		        that.$axios({
-		      	  	url: '/leaderapi/sendVerifyCode.action',
+		      	  	url: '/api/app/appUser/getVerificationCode',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		mobile: that.phone
+		          		phone: that.phone
 		        	})
 		      	}).then(res => {
 			        if (res.data.status === '0') {
 			          	Toast('获取成功')
 			          	that.codeGet()
 			        } else {
-			          	Toast(res.data.message)
+			          	Toast(res.data.msg)
 			        }
 		      	})
 		    },

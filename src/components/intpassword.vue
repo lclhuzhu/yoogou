@@ -91,7 +91,7 @@
 	          			url = '/api/app/presale/saleItem'
 	          			data = {
 		          			userId: localStorage.getItem('userId'),
-			          		passWord: that.password,
+			          		payPassword: that.password,
 			          		userOrdersId: that.userOrdersId,
 		          		}
 	          			break;
