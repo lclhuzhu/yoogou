@@ -16,8 +16,8 @@
      	产品说明：<br />
      	{{ data.remark }}
     </van-cell>
-    <div class="goods-remind" id="time">
-      
+    <div class="goods-remind">
+      {{int_day}}
     </div>
   </van-cell-group>
   <!--弹出框-->
@@ -51,6 +51,7 @@
 			source: 5,
 			passhow: false,
 			intTime:'',
+			int_day:'',
             imgs: [
               'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
               'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
@@ -59,8 +60,7 @@
 	    },
 	    created() {
 	    	this.itemid = this.$route.query.id;
-			this.details(),
-			this.show_time()
+			this.details()			
 		},
 	    methods: {
 	    	details(){
@@ -74,19 +74,25 @@
 				}).then(function(res) {
 					that.data = res.data.data[0]
 					that.intTime = res.data.data[0].updateTime
+					that.$nextTick(
+						 	that.show_time()
+					)
 				})
 	    	},
 //	    	倒计时
 			show_time(){ 
 				let that = this
-				var time_end = that.intTime	//上次时间
-			    var time_start = new Date().getTime(); //设定当前时间
+				var time_end = new Date(that.intTime).getTime()	//上次时间
+			    var time_start = new Date().getTime(); //获取当前时间
 			    var santian = 259200
-			    console.log(time_end)
 			    // 计算时间差 
 			    var a = time_end + santian //三天后
-			    var time_distance = a- time_start; //剩余时间
-			    console.log(a)
+//			    var time_distance = a- time_start; //剩余时间
+				var time_distance = 5212951
+//			    setInterval(()=>{
+//			    	console.log(time_distance)
+//					time_distance --
+//			    },1000)
 			    // 天
 			    var int_day = Math.floor(time_distance/86400000) 
 			    time_distance -= int_day * 86400000; 
@@ -112,11 +118,8 @@
 			        int_second = "0" + int_second; 
 			    } 
 			    // 显示时间 
-			    var int_day = int_day + int_hour + int_minute + int_second
-			    console.log(int_day)
-			    
+			    that.int_day = int_day +'天'+ int_hour +'时'+ int_minute +'分'+ int_second+'秒'+'后可以发起买入'
 			    // 设置定时器
-//			    setTimeout("show_time()",1000); 
 			},
 
 	    	onClickLeft() {

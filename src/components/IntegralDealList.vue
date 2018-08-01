@@ -65,6 +65,9 @@
 			</router-link>
 		</div>
       </div>
+		<div class="" v-if="list.length == 0">
+			暂无数据
+		</div>
 		</van-list>
   </van-pull-refresh>
 	</div>
