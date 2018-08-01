@@ -99,7 +99,7 @@
 	          			url = '/api/app/presale/saleScheduleProfit'
 	          			data = {
 		          			userId: localStorage.getItem('userId'),
-			          		payPassword: that.password,
+			          		passWord: that.password,
 			          		money: that.money,
 		          		}
 	          			break;
@@ -139,7 +139,6 @@
 			        	if(that.source == 3){
 			        		that.passhow = false
 			        		that.msg = res.data.msg
-			        		console.log(that.msg)
 			        		that.show = true
 			        	} else {
 			        		Toast(res.data.msg)
