@@ -12,19 +12,12 @@ Vue.config.productionTip = false
 Vue.use(Vant)
 Vue.prototype.$axios = axios
 
-// http request 请求拦截器，有token值则配置上token值
-axios.interceptors.request.use(
-		config => {
-        config.headers = {
-          'X-With-USER_PHONE': localStorage.getItem('myPhone'),
-          'X-With-CLIENTID': localStorage.getItem('myId')
-        }
-        return config
-    },
-    err => {
-        return Promise.reject(err)
-    }
-)
+// 全局请求头
+if (localStorage.getItem('myPhone') && localStorage.getItem('myId')) {
+	axios.defaults.headers.post['X-With-USER_PHONE'] = localStorage.getItem('myPhone')
+	axios.defaults.headers.post['X-With-CLIENTID'] = localStorage.getItem('myId')
+}
+
 // Add a response interceptor
 axios.interceptors.response.use(function (response) {
   return response
