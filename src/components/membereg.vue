@@ -56,7 +56,7 @@
 		          		phone: that.phone
 		        	})
 		      	}).then(res => {
-			        if (res.data.status === '0') {
+			        if (res.data.code === '0') {
 			          	Toast('获取成功')
 			          	that.codeGet()
 			        } else {
