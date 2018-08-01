@@ -118,7 +118,7 @@
 		       		method: 'POST',
 		        	data: qs.stringify({
 						activatePhone: that.tel,
-						userId: that.userId
+						userId: localStorage.getItem('userId')
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {

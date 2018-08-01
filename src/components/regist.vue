@@ -99,6 +99,7 @@
 		      	}).then(res => {
 			        if (res.data.code == 0) {
 			        	Toast(res.data.msg)
+			        	that.$router.pus({path:'/'})
 			        } else {
 			          	Toast(res.data.msg)
 			        }
