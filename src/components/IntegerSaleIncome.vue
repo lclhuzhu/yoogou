@@ -63,7 +63,7 @@
         	})
       	}).then(res => {
 	        if (res.data.code == 0) {
-	        	
+	        	that.profit = res.data.data 
 	        } else {
 	          Toast(res.data.msg)
 	        }
