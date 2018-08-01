@@ -104,7 +104,6 @@
 		    },
 		    //激活弹窗
 		    showpop (e) {
-		    	console.log(e)
 		    	let that = this
 		    	that.name = e.userName
 		    	that.tel = e.userTel
