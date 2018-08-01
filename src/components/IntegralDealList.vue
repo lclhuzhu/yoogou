@@ -90,7 +90,6 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.state.Exchange.userId)
     this.requestIsCollide()
   },
   computed: {},
@@ -214,7 +213,6 @@ export default {
             } else {
               this.list = this.list.concat(res.data.data)
             }
-            console.log(this.list)
             if (res.data.data.length < this.pageSize) {
               this.noMore = true
             }
