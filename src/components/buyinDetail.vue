@@ -39,6 +39,9 @@
 	import { Toast } from 'vant'
 	import qs from 'qs'
 	import pass from '@/components/intpassword.vue'
+	import mairu1 from '@/assets/mairu1.png'
+	import mairu2 from '@/assets/mairu2.png'
+	
 	
     export default {
         name: "buyinDetail",
@@ -50,17 +53,17 @@
           	status: null,			//是否设置二级密码   0设置   -1未设置
 			source: 5,
 			passhow: false,
-			intTime:'',
-			int_day:'',
+			intTime:'',				//上次的买入时间
+			int_day:'',				//显示倒计时
             imgs: [
-              'https://img.yzcdn.cn/public_files/2017/10/24/e5a5a02309a41f9f5def56684808d9ae.jpeg',
-              'https://img.yzcdn.cn/public_files/2017/10/24/1791ba14088f9c2be8c610d0a6cc0f93.jpeg'
+              mairu1,mairu2
             ]
           }
 	    },
 	    created() {
 	    	this.itemid = this.$route.query.id;
-			this.details()			
+			this.details()	
+			
 		},
 	    methods: {
 	    	details(){
@@ -80,45 +83,52 @@
 				})
 	    	},
 //	    	倒计时
+
 			show_time(){ 
-				let that = this
-				var time_end = new Date(that.intTime).getTime()	//上次时间
-			    var time_start = new Date().getTime(); //获取当前时间
-			    var santian = 259200
-			    // 计算时间差 
-			    var a = time_end + santian //三天后
-//			    var time_distance = a- time_start; //剩余时间
-				var time_distance = 5212951
-			    setInterval(()=>{
-					time_distance = time_distance --
+			
+			    let show_time = setInterval(()=>{
+			    	let that = this
+					var time_end = new Date(that.intTime).getTime()	//上次时间
+				    var time_start = new Date().getTime(); //获取当前时间
+				    var santian = 259200
+				    // 计算时间差 
+				    var a = time_end + santian //三天后
+				    var time_distance = a- time_start; //剩余时间
+				    if(time_distance>0){
+				    	time_distance = time_distance --
+					// 天
+				    var int_day = Math.floor(time_distance/86400000) 
+				    time_distance -= int_day * 86400000; 
+				    // 时
+				    var int_hour = Math.floor(time_distance/3600000) 
+				    time_distance -= int_hour * 3600000; 
+				    // 分
+				    var int_minute = Math.floor(time_distance/60000) 
+				    time_distance -= int_minute * 60000; 
+				    // 秒 
+				    var int_second = Math.floor(time_distance/1000) 
+				    // 时分秒为单数时、前面加零 
+				    if(int_day < 10){ 
+				        int_day = "0" + int_day; 
+				    } 
+				    if(int_hour < 10){ 
+				        int_hour = "0" + int_hour; 
+				    } 
+				    if(int_minute < 10){ 
+				        int_minute = "0" + int_minute; 
+				    } 
+				    if(int_second < 10){
+				        int_second = "0" + int_second; 
+				    } 
+				    // 显示时间 
+				    int_day  = int_day +'天'+ int_hour +'时'+ int_minute +'分'+ int_second+'秒'+'后可以发起买入'
+					that.int_day = int_day
+				    }else{
+				    	that.int_day = "可以买入"
+				    }
+					
 			    },1000)
-			    // 天
-			    var int_day = Math.floor(time_distance/86400000) 
-			    time_distance -= int_day * 86400000; 
-			    // 时
-			    var int_hour = Math.floor(time_distance/3600000) 
-			    time_distance -= int_hour * 3600000; 
-			    // 分
-			    var int_minute = Math.floor(time_distance/60000) 
-			    time_distance -= int_minute * 60000; 
-			    // 秒 
-			    var int_second = Math.floor(time_distance/1000) 
-			    // 时分秒为单数时、前面加零 
-			    if(int_day < 10){ 
-			        int_day = "0" + int_day; 
-			    } 
-			    if(int_hour < 10){ 
-			        int_hour = "0" + int_hour; 
-			    } 
-			    if(int_minute < 10){ 
-			        int_minute = "0" + int_minute; 
-			    } 
-			    if(int_second < 10){
-			        int_second = "0" + int_second; 
-			    } 
-			    // 显示时间 
-			    that.int_day = int_day +'天'+ int_hour +'时'+ int_minute +'分'+ int_second+'秒'+'后可以发起买入'
-			    // 设置定时器
+			    
 			},
 
 	    	onClickLeft() {
