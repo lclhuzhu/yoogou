@@ -31,6 +31,7 @@
 
 <script>
 import { Toast } from 'vant'
+import qs from 'qs'
 export default {
   name: 'willPayList',
   data() {
@@ -73,9 +74,9 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/getPrebuyOrderSucess',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           orderId: id,
-          type
+          type: type
         })
       }).then(res => {
         this.loading =false;

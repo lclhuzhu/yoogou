@@ -104,7 +104,7 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/updateMatchingOrder',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           orderId: orderId,
           images,
           payPassword
@@ -122,7 +122,7 @@ export default {
       this.$axios({
         url: '/api/app/prebuyOrder/getMatchingOrder',
         method: 'POST',
-        data: JSON.stringify({
+        data: qs.stringify({
           orderId: orderId
         })
       }).then(res => {
