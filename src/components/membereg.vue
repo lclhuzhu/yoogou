@@ -49,9 +49,6 @@
 		    // 获取验证码
 		    getCode () {
 		        let that = this
-		        Toast('获取成功')
-	          	that.codeGet()
-	          	return false
 		        that.$axios({
 		      	  	url: '/leaderapi/sendVerifyCode.action',
 		       		method: 'POST',
