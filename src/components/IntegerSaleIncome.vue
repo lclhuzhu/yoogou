@@ -59,7 +59,7 @@
 		     	url: '/api/app/presale/getScheduleProfit',
 		      method: 'POST',
         	data: qs.stringify({
-          		userId:1,// localStorage.getItem('userId'),
+          		userId: localStorage.getItem('userId'),
         	})
       	}).then(res => {
 	        if (res.data.code == 0) {
