@@ -7,7 +7,7 @@
 				<p class="wal_p1">{{ item.address }}</p>
 			</div>
 			<div class="">
-				<p class="wal_p2 flex_between_v" @click="defaul(item.id)"><img src="@/assets/mr@2x.png"/>设为默认</p>
+				<p v-if="item.isDefault != 1" class="wal_p2 flex_between_v" @click="defaul(item.id)"><img src="@/assets/mr@2x.png"/>设为默认</p>
 				<p class="wal_p3" @click="delpop(item.id)">删除</p>
 			</div>
 		</div>

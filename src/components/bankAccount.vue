@@ -100,7 +100,9 @@
 		      	}).then(res => {
 			        if (res.data.code == 0) {			        	
 		          		that.card = res.data.data.account
-		          		that.bank = res.data.data.openBank
+		          		if (res.data.data.openBank) {
+		          			that.bank = res.data.data.openBank		          			
+		          		}
 		          		that.branch = res.data.data.openBranchBank
 		          		that.name = res.data.data.userName
 		          		that.$nextTick(()=>{

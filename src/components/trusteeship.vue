@@ -105,7 +105,7 @@
 		      	  	url: '/api/app/appUser/getMyTrustList',
 		       		method: 'POST',
 		        	data: qs.stringify({
-		          		userId: localStorage.getItem('userId')
+		          		userId: localStorage.getItem('myId')
 		        	})
 		      	}).then(res => {
 			        if (res.data.code == 0) {
@@ -136,15 +136,15 @@
 		    },
 		    //跳转买入商品
 		    shipTrans () {
-		    	if (this.phoneSet) {
-					this.$router.push({path:'/trusteeshipTrans'})					
+		    	if (!this.phoneSet) {
+					this.$router.push({path:'/integralTrans'})					
 				} else {
 					Toast('请选择账户')
 				}
 		    },
 			//跳转卖出产品
 			linkmytrusteeship () {
-				if (this.phoneSet) {
+				if (!this.phoneSet) {
 					this.$router.push({path:'/integerSaleMain'})					
 				} else {
 					Toast('请选择账户')
@@ -152,8 +152,8 @@
 			},
 			//跳转积分交易情况
 			DealList () {
-				if (this.phoneSet) {
-					this.$router.push({path:'/trusteeshipDealList'})					
+				if (!this.phoneSet) {
+					this.$router.push({path:'/IntegralDealList'})					
 				} else {
 					Toast('请选择账户')
 				}

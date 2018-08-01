@@ -25,7 +25,7 @@
 		<van-popup v-model="show">
 			<p class="pop_til"><span>提示</span><span class="close" @click="show = false">X</span></p>
 			<p class="pop_p1">二级密码修改成功！</p>
-			<p class="pop_p2" @click="show = false">确认</p>
+			<p class="pop_p2" @click="onClickLeft">确认</p>
 		</van-popup>
 	</div>
 </template>

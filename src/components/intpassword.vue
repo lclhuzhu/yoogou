@@ -83,7 +83,7 @@
 	          			url = '/api/app/automaticOrder/setAutoSale'
 	          			data = {
 		          			userId: localStorage.getItem('userId'),
-			          		autoType: that.autoType,
+			          		autoType: that.saleType,
 			          		passWord: that.password
 		          		}
           				break;

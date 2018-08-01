@@ -3,7 +3,7 @@
 		<van-nav-bar title="预约买入" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<van-radio-group v-model="radio">
 		    <van-cell-group>
-		   		<van-cell title="8天一单1" clickable @click="radio = '4'">
+		   		<van-cell title="8天一单" clickable @click="radio = '4'">
 		      		<van-radio name="4" />
 			    </van-cell>
 			    <van-cell title="9天一单" clickable @click="radio = '5'">
@@ -43,7 +43,7 @@
 		name: 'orbuying',
 		data () {
 			return {
-				radio: '8',				//选择类型
+				radio: '0',				//选择类型
 				status: null,			//是否设置二级密码   0设置   -1未设置
 				source: 0
 			}
