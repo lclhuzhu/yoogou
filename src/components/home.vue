@@ -12,7 +12,7 @@
 		<div class="menu">
 			<ul>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/fjicon@2x.png"/>
 						</div>
@@ -22,7 +22,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/xsicon@2x.png"/>
 						</div>
@@ -32,7 +32,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/fjpicon@2x.png"/>
 						</div>
@@ -42,7 +42,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/hcicon@2x.png"/>
 						</div>
@@ -52,7 +52,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/sjicon@2x.png"/>
 						</div>
@@ -62,7 +62,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/jyicon@2x.png"/>
 						</div>
@@ -72,7 +72,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/llicon@2x.png"/>
 						</div>
@@ -82,7 +82,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/ghicon@2x.png"/>
 						</div>
@@ -92,7 +92,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/wzicon@2x.png"/>
 						</div>
@@ -102,7 +102,7 @@
 					</router-link>
 				</li>
 				<li>
-					<router-link to='/home'>
+					<router-link to='/none'>
 						<div class="menu-img">
 							<img src="@/assets/fdicon@2x.png"/>
 						</div>
@@ -123,7 +123,7 @@
 			<ul>
 				<li>
 					<div class="integral-mairu">
-						<ul style="border-right: 2px solid #E5E5E5;">
+						<ul style="border-right: 2px solid #E5E5E5;" @click="linkmairu">
 							<li>
 								<p>买入商品</p>
 								<span>PURCHUSE</span>
@@ -138,7 +138,7 @@
 				</li>
 				<li>
 					<div class="integral-maichu">
-						<ul>
+						<ul @click="linkmaichu">
 							<li>
 								<p>卖出产品</p>
 								<span>SELLOUT</span>
@@ -168,6 +168,12 @@
 		methods: {
 		    onChange(index) {
 		      Toast('当前 Swipe 索引：' + index);
+    		},
+    		linkmairu () {
+    			this.$router.push({path:'/integralTrans'})
+    		},
+    		linkmaichu () {
+    			this.$router.push({path:'/integerSaleMain'})
     		}
   		}
 	})

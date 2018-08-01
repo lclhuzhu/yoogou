@@ -15,12 +15,10 @@ Vue.prototype.$axios = axios
 // http request 请求拦截器，有token值则配置上token值
 axios.interceptors.request.use(
 		config => {
-//      config.headers = {
-//        ...config.headers,
-//        ...store.state.Exchange.headers
-//      }
-        config.headers.userPhone = localStorage.getItem('myPhone')
-        config.headers.clientId = localStorage.getItem('myId')
+        config.headers = {
+          'X-With-USER_PHONE': localStorage.getItem('myPhone'),
+          'X-With-CLIENTID': localStorage.getItem('myId')
+        }
         return config
     },
     err => {

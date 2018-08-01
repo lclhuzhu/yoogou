@@ -40,6 +40,7 @@ import Customer from '@/components/customer'
 import Membereg from '@/components/membereg'
 import ReceiveDetail from '@/components/receiveDetail'
 import Trusteeship from '@/components/trusteeship'
+import None from '@/components/none'
 
 Vue.use(Router)
 
@@ -47,6 +48,7 @@ const router = new Router({
   routes: [
     {path: '/',name: 'regist',component: Regist,meta: {title: '注册'}},
     {path: '/login',name: 'login',component: Login,meta: {title: '登录'}},
+    {path: '/none',name: 'none',component: None,meta: {title: '互助商城'}},
     {path: '/index',name: 'index',component: Index,meta: {title: '互助商城'}, children:[
     	{path: '/home',name: 'home',component: Home, meta: {title: '互助商城'}},
     	{path: '/integral',name: 'integral',component: Integral, meta: {title: '互助商城'}},
