@@ -164,7 +164,7 @@
     background-color: deeppink;
   }
   img {
-    width: 7.5rem;
+    width: 100%;
     height: 6.18rem;
     display: block;
   }
