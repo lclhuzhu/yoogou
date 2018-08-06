@@ -18,7 +18,8 @@
 	            	</ul>
 	            	<ul class="price">
 	              		<li class="state">应付区块链币:</li>
-	              		<li class="money dingdan-right-li">{{ item.coinPrice }}</li>
+	              		<li class="money dingdan-right-li" v-if="item.price != 0">{{ (item.price/item.coinPrice).toFixed(2) }}</li>
+	              		<li class="money dingdan-right-li" v-else>0</li>
 	            	</ul>
 	            	<ul class="await">
 	              		<li class="state">付款钱包地址</li>

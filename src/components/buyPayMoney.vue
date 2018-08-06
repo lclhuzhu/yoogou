@@ -10,6 +10,7 @@
             <ul class="price">
               <li class="state">钱包地址</li>
               <li class="money">{{orderDetail.walletAddress}}</li>
+              <input type="" name="copyAdd" id="copyAdd" v-model="orderDetail.walletAddress" style="position: absolute;top: 0;opacity: 0;"/>
             </ul>
             <div class="button" @click="copyToClipboard">
               复制该地址
@@ -41,6 +42,7 @@
 
 <script>
 import { Toast } from 'vant'
+import qs from 'qs'
 import pass from '@/components/intpassword.vue'
 const uploadedImgs = []
 export default {
@@ -64,7 +66,10 @@ export default {
       history.go(-1)
     },
     copyToClipboard() {
-      // todo
+      	var e = document.querySelector("#copyAdd")//对象是contents
+      	console.log(e)
+        e.select(); //选择对象
+        Toast('复制成功')
     },
     async onPasswdInputEnd(data) {
       const imageTasks = []

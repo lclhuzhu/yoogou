@@ -6,16 +6,15 @@
         <li class="state">合计</li>
         <li class="money order-right-li">{{'￥'+totalPrice}}</li>
       </ul>
-       <van-pull-refresh v-model="loading" @refresh="onRefresh" >
 		<van-list
       v-model="loading"
-      :finished="noMore"
-      @load="onLoad">
+      :finished="noMore">
       <router-link :to="{path:'/BuyPayMoney',query:{orderId:item.id}}" v-for="(item,idx) in list" :key="idx">
         <div class="content">
           <ul class="price">
           	<li class="state">应付区块链币：</li>
-            <li class="money">{{ item.coinPrice }}</li>
+            <li class="money" v-if="item.price != 0">{{ (item.price/item.coinPrice).toFixed(2) }}</li>
+            <li class="money" v-else>0</li>
             <li class="state">{{item.subOrderNo}}</li>
             <li class="money">￥{{item.price}}</li>
             <li class="state">钱包地址</li>
@@ -23,8 +22,7 @@
           </ul>
         </div>
       </router-link>
-      	</van-list>
-  </van-pull-refresh>
+      </van-list>
     </div>
 
   </div>
@@ -85,11 +83,12 @@ export default {
         this.loading =false;
         if (res.data.code == 0) {
           var data = []
-          for (var d in res.data.data) {
-            if (!d.allPrice) {
-              data = data.push(d)
+          for (var d = 0; d < res.data.data.length; d++) {
+            if (!res.data.data[d].allPrice) {
+              data.push(res.data.data[d])
+              console.log(data)
             } else {
-              this.totalPrice = d.allPrice
+              this.totalPrice = res.data.data[d].allPrice
             }
           }
           if(res.data.data.length<this.pageSize) {

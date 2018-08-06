@@ -8,7 +8,8 @@
         	</ul>
         	<ul class="middle" style="border: 0;">
 			 	<li class="state">应付区块链币:</li>
-		        <li class="money dingdan-right-li">{{ bite }}</li>
+		        <li class="money dingdan-right-li" v-if="price != 0">{{ (price/bite).toFixed(2) }}</li>
+		        <li class="money dingdan-right-li" v-else>0</li>
         	</ul>
         	<ul class="middle">
 			 	<li class="state">付款钱包地址</li>
