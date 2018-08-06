@@ -18,8 +18,7 @@
 	            	</ul>
 	            	<ul class="price">
 	              		<li class="state">应付区块链币:</li>
-	              		<li class="money dingdan-right-li" v-if="item.price != 0">{{ (item.price/bite).toFixed(2) }}</li>
-	              		<li class="money dingdan-right-li" v-else>0</li>
+	              		<li class="money dingdan-right-li">{{ item.coinPrice }}</li>
 	            	</ul>
 	            	<ul class="await">
 	              		<li class="state">付款钱包地址</li>
@@ -55,23 +54,12 @@
 		created () {
 			this.No = this.$route.query.No
 			this.getorder()
-			this.getPrice()
 		},
 		methods: {
 			//返回
 		    onClickLeft() {
 		      	history.go(-1)
 		    },
-		    //获取应付区块链币
-			getPrice () {
-			 	let that = this
-				that.$axios.post('/api/app/blockchainPrice/findBlockchainPrice',)
-					.then(res => {
-						if (res.data.code == 0) {
-							that.bite = res.data.data
-				  		}
-			   		})
-			},
 		    //获取订单
 			getorder () {
 				let that = this

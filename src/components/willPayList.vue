@@ -15,8 +15,7 @@
         <div class="content">
           <ul class="price">
           	<li class="state">应付区块链币：</li>
-            <li class="money" v-if="item.price != 0">{{ (item.price/bite).toFixed(2) }}</li>
-            <li class="money" v-else>0</li>
+            <li class="money">{{ item.coinPrice }}</li>
             <li class="state">{{item.subOrderNo}}</li>
             <li class="money">￥{{item.price}}</li>
             <li class="state">钱包地址</li>
@@ -58,19 +57,8 @@ export default {
       this.title = '尾款列表'
     }
     this.queryListData(id, type,0)
-    this.getPrice()
   },
   methods: {
-  	//获取应付区块链币
-		getPrice () {
-		 	let that = this
-			that.$axios.post('/api/app/blockchainPrice/findBlockchainPrice',)
-				.then(res => {
-					if (res.data.code == 0) {
-						that.bite = res.data.data
-			  	}
-		   	})
-		},
     onRefresh() {
       this.pageIndex = 0;
       this.noMore = false;

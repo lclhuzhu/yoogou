@@ -8,8 +8,7 @@
         	</ul>
         	<ul class="middle" style="border: 0;">
 			 	<li class="state">应付区块链币:</li>
-		        <li class="money dingdan-right-li" v-if="price != 0">{{ (price/bite).toFixed(2) }}</li>
-		        <li class="money dingdan-right-li" v-else>0</li>
+		        <li class="money dingdan-right-li">{{ bite }}</li>
         	</ul>
         	<ul class="middle">
 			 	<li class="state">付款钱包地址</li>
@@ -72,13 +71,12 @@
 	        	source: 4,
 	        	orderId: 0,
 	        	type: 0 || 1,				//0支付不成功   1成功
-	        	bite: '',					//区块链币
+	        	bite: 0,					//区块链币
 	    	}
 		},
 		created () {
 			this.orderId = this.$route.query.orderId
 			this.getdeatil()
-			this.getPrice()
 		},
 	    methods: {
 	        onClickLeft () {
@@ -99,21 +97,12 @@
 			        	that.price = res.data.data.price
 			        	that.walletAddress = res.data.data.walletAddress
 			        	that.img = res.data.data.img
+			        	that.bite = res.data.data.coinPrice
 			        } else {
 			        	Toast(res.data.msg)
 			        }
 		      	})
 		    },
-		    //获取应付区块链币
-			getPrice () {
-			 	let that = this
-				that.$axios.post('/api/app/blockchainPrice/findBlockchainPrice',)
-					.then(res => {
-						if (res.data.code == 0) {
-							that.bite = res.data.data
-				  		}
-			   		})
-			},
 		    //未收款
 		    subnone () {
 		    	let that = this
