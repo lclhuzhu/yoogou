@@ -21,13 +21,6 @@
 			</ul>
 		</div>
 	</div>
-	<!--<div class="rocord-time">-->
-		<!--<ul>-->
-			<!--<li class="operation">客服人员介入</li>-->
-			<!--<li class="time">211:11:55:01</li>-->
-		<!--</ul>-->
-	<!--</div>-->
-
   <div class="lists">
     <div class="item-recode" v-for="(item,idx) in operations" :key="idx">
       <ul class="item" >
@@ -36,7 +29,6 @@
       </ul>
     </div>
   </div>
-
   <!--弹框-->
   <van-popup v-model="isShow" :close-on-click-overlay = "true">
     <div class="pop-bottm">
@@ -46,20 +38,16 @@
         <router-link :to="{path:'/willPayList',query:{id:orderDetail.id,type:'0'}}">
           <li class="will-pay">预付款</li>
         </router-link>
-
         <router-link :to="{path:'/willPayList',query:{id:orderDetail.id,type:'1'}}">
           <li class="delay">尾款</li>
         </router-link>
-
       </ul>
-
     </div>
   </van-popup>
 	<div class="btn">
 		<button @click="isShow = true">上传凭证</button>
 	</div>
 </div>
-
 </template>
 
 <script>
@@ -175,7 +163,6 @@ ul li {
   font-size: 0.28rem;
 }
 .time {
-  /*color: ;*/
   text-align: right;
   font-size: 0.24rem;
   color: #222222;

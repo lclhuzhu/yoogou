@@ -18,7 +18,7 @@
 	            <p class="getcode" v-if="show && codeshow" @click="getCode">获取验证码</p>
 	            <p class="getcode opt5" v-if="!show">{{count}}s后获取</p>
 			</div>
-			<p class="link_p">未注册？<router-link to='/'>前往注册</router-link></p>
+			<p class="link_p">未注册？<router-link to='/regist'>前往注册</router-link></p>
 		</div>
 		<div class="reg" v-if="phone && code" @click="logClick">
 			登录

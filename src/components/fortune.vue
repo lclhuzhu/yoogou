@@ -1,6 +1,6 @@
 <template>
 	<div class="fortune">
-		<van-nav-bar title="福币收益" left-text="返回" left-arrow @click-left="onClickLeft"/>
+		<van-nav-bar title="汇币收益" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<van-list class="all li_box" v-model="loading" :finished="finished" @load="onLoad">
 			<div class="" v-for="(item, index) in list" :key='item.msg'>
 				<p class="top_p">{{ item.msg }}</p>

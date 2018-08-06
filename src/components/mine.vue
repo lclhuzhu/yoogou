@@ -78,7 +78,7 @@
 			<router-link to='/fortune' class="flex_between_v list_div">
 				<div class="flex_start_v">
 					<img src="@/assets/fbicon@2x.png"/>
-					<p class="list_p1">福币收益</p>
+					<p class="list_p1">汇币收益</p>
 				</div>
 				<img src="@/assets/commone_btn_in@2x.png" class="right_img"/>
 			</router-link>
