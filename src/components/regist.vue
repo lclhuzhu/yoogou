@@ -23,7 +23,7 @@
 				<input type="text" name="" id="" v-model="people" placeholder="请输入推荐人手机号码"/>
 				<img src="@/assets/shanchu.png" v-if="people" @click="people = ''"/>
 			</div>
-			<p class="link_p">已注册？<router-link to='/login'>快速登录</router-link></p>
+			<p class="link_p">已注册？<router-link to='/'>快速登录</router-link></p>
 		</div>
 		<div class="reg" v-if="phone && code && people" @click="regClick">
 			立即注册
