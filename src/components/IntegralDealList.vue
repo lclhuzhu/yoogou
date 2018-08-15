@@ -1,14 +1,10 @@
 <template>
 	<div class="IntegralDealList">
-		<van-nav-bar title="积分交易情况" left-text="返回" left-arrow @click-left="onClickLeft" @click-right="onClickRight" />
+		<van-nav-bar title="积分交易情况" left-text="返回" left-arrow @click-left="onClickLeft"/>
 		<van-tabs v-model="active" @click="onClick">
 		  <van-tab v-for="(d,index) in tab" :title="d" :key='index'></van-tab>
 		</van-tabs>
-    <van-pull-refresh v-model="loading" @refresh="onRefresh" >
-		<van-list
-      v-model="loading"
-      :finished="noMore"
-      @load="onLoad">
+		<van-list :finished="noMore">
       <div class="cell" v-for="(item,idx) in list" :key="idx">
         <div class="integral-mairu-list" v-if="checkIndex == 0">
 			<router-link :to="{path:'/buyOrderDetails' ,query:{id:item.id}}">
@@ -69,7 +65,6 @@
 			暂无数据
 		</div>
 		</van-list>
-  </van-pull-refresh>
 	</div>
 </template>
 
@@ -93,8 +88,8 @@ export default {
     }
   },
   mounted() {
-    console.log(this.$store.state.Exchange.userId)
     this.requestIsCollide()
+    this.requestListData()
   },
   computed: {},
   methods: {
@@ -137,14 +132,12 @@ export default {
     onClickLeft() {
       history.go(-1)
     },
-    onClickRight() {
-      Toast('按钮')
-    },
     onClick(index, title) {
       this.list = []
       this.pageIndex = 0
       this.noMore = false
       this.checkIndex = index
+      this.requestListData()
     },
     onLoad(args) {
       this.requestListData(++this.pageIndex)
@@ -212,12 +205,7 @@ export default {
         }).then(res => {
           this.loading = false
           if (res.data.code == 0) {
-            if (pageIndex == 0) {
-              this.list = res.data.data
-            } else {
-              this.list = this.list.concat(res.data.data)
-            }
-            console.log(this.list)
+              this.list = this.list.concat(res.data.data)              
             if (res.data.data.length < this.pageSize) {
               this.noMore = true
             }
